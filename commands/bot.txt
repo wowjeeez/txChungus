@@ -1,0 +1,6 @@
+:star: If you want to configure txAdmin Discord bot, Read the two links below:
+**:globe_with_meridians: Setting up a bot application:**
+<https://discordjs.guide/preparations/setting-up-a-bot-application.html>
+**:globe_with_meridians: Adding your bot to servers:**
+<https://discordjs.guide/preparations/adding-your-bot-to-servers.html>
+:exclamation: After that, copy the token to txAdmin bot settings page.

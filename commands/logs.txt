@@ -1,0 +1,6 @@
+You want logs? We have logs:
+1. txAdmin console log
+2. txAdmin action log
+3. Server log
+4. FXServer console log
+5. ban/warn/wl logs

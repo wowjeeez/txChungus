@@ -1,0 +1,5 @@
+:question: **How to access txAdmin from outside your VPS:**
+:one: Open your OS firewall (eg Windows Firewall);
+:two: Open your Hosting Company firewall (eg OVH, AWS, Google, etc);
+:three: Open `http://your-public-ip:40120/` in your browser (do not use `localhost`).
+:warning: **If this does not work, then it's an issue your networking and NOT txAdmin!**

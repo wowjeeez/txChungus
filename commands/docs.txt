@@ -1,0 +1,2 @@
+Please read the installation instructions:
+<https://github.com/tabarra/txAdmin#installing--running>

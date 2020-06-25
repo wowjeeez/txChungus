@@ -1,0 +1,8 @@
+If you want to run two **txAdmin** at the same time, you will need to use convars to set a new profile and port.
+If on windows, create a `server2.bat` file inside the FXServer folder and add:
+```bat
+@echo off
+FXServer.exe +set serverProfile "server2" +set txAdminPort "40125"
+pause
+```
+*(feel free to choose any other name or port)*

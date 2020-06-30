@@ -28,5 +28,5 @@ process.on('uncaughtException', function(err) {
     dir(err.stack)
 });
 process.on('exit', (code) => {
-    log("Deleting myself from this world");
+    log("Bitch I'm out...");
 });

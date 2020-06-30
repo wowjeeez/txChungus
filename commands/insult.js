@@ -749,7 +749,7 @@ const insults = [
 module.exports = {
     description: 'Insults a member.',
     async execute(message, args, txChungus) {
-        if (!message.mentions.users.size) {
+        if(!message.mentions.users.size){
             return message.reply('you need to tag an user in order to mock them... fucktard');
         }
 

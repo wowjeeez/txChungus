@@ -28,5 +28,5 @@ process.on('uncaughtException', function(err) {
     dir(err.stack)
 });
 process.on('exit', (code) => {
-    log("Stopping txAdmin");
+    log("Deleting myself from this world");
 });

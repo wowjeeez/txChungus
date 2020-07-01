@@ -16,7 +16,13 @@ module.exports = {
             GlobalData.fxserverVersions.windows,
             GlobalData.fxserverVersions.linux
         )) {
-            return message.channel.send('IDK, FiveM stuff might be offline or something...');
+            return message.reply('IDK, FiveM stuff might be offline or something...');
+        }
+
+        //If mention
+        let mentionString = '';
+        if(message.mentions.users.size){
+            mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
 
         //If !latest full
@@ -30,16 +36,34 @@ module.exports = {
             return;
         }
 
-        //txAdmin info card
-        let txVersionMsg;
+        //In case fxserver already have the latest txAdmin
         if(config.latestTXAdminVersionOnArtifact){
-            txVersionMsg = new MessageEmbed({
+            const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
                 description: `It already comes with FXServer ${config.latestTXAdminVersionOnArtifact} and above, so no need to download it separately!`
             });
+            message.channel.send(mentionString, txVersionMsg);
+
+            const fxVersionMsg = new MessageEmbed({
+                color: 0xEFAE87,
+                title: `FXServer Artifact:`,
+                fields: [
+                    {
+                        name: `📥 Latest Windows: ${GlobalData.fxserverVersions.windows.latest}`,
+                        value: GlobalData.fxserverVersions.windows.artifactsLink
+                    },
+                    {
+                        name: `📥 Latest Linux: ${GlobalData.fxserverVersions.linux.latest}`,
+                        value: GlobalData.fxserverVersions.linux.artifactsLink
+                    }
+                ]
+            });
+            return message.channel.send(fxVersionMsg);
+
+        //In case this version is still not available with fxserver
         }else{
-            txVersionMsg = new MessageEmbed({
+            const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
                 description: `The most recent txAdmin version is still not present in the fxserver artifacts.
@@ -48,25 +72,9 @@ https://github.com/tabarra/txAdmin/releases/latest
 Then replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
 On linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.`
             });
+            return message.channel.send(mentionString, txVersionMsg);
         }
-        message.channel.send(txVersionMsg);
 
-        //FXServer info card
-        const outMsg = new MessageEmbed({
-            color: 0xEFAE87,
-            title: `FXServer Artifact:`,
-            fields: [
-                {
-                    name: `📥 Latest Windows: ${GlobalData.fxserverVersions.windows.latest}`,
-                    value: GlobalData.fxserverVersions.windows.artifactsLink
-                },
-                {
-                    name: `📥 Latest Linux: ${GlobalData.fxserverVersions.linux.latest}`,
-                    value: GlobalData.fxserverVersions.linux.artifactsLink
-                }
-            ]
-        });
-        return message.channel.send(outMsg);
     },
 };
 

@@ -27,6 +27,6 @@ module.exports = {
     description: 'Magic 8 ball knows everything.',
     async execute(message, args, txChungus) {
         const answer = answers[Math.floor(Math.random() * answers.length)];
-        return message.reply(answer);
+        return message.reply(`Magic 8 Ball says: ${answer}`);
     },
 };

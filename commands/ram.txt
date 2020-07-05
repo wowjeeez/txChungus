@@ -1,0 +1,3 @@
+If you are seing bigger than expected RAM usage values on Linux, don't worry, this is just how Linux works.  
+He reports for node not just used, but also the cache and buffer size combined.  
+For more information, visit https://www.linuxatemyram.com

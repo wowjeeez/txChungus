@@ -21,12 +21,17 @@ const answers = [
     `Outlook not so good`,
     `Very doubtful`,
 ];
-
+const shakingGif = `https://tenor.com/view/8ball-bart-simpson-shaking-shake-magic-ball-gif-17725278`;
 
 module.exports = {
     description: 'Magic 8 ball knows everything.',
     async execute(message, args, txChungus) {
+        const question = message.content.substring(message.content.indexOf(' ')+1);
+        const header = `<@${message.author.id}> asked:\n> ${question}\nMagic 8 Ball says:\n> `;
+        const outMsg = await message.channel.send(header + shakingGif);
         const answer = answers[Math.floor(Math.random() * answers.length)];
-        return message.reply(`Magic 8 Ball says: ${answer}`);
+        setTimeout(() => {
+            outMsg.edit(`${header} **${answer}**`);
+        }, 5000);
     },
 };

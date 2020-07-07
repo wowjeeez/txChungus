@@ -66,7 +66,7 @@ module.exports = {
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
-                description: `The most recent txAdmin version is still not present in the fxserver artifacts.
+                description: `The most recent txAdmin version is not yet present in the fxserver artifacts.
 Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
 https://github.com/tabarra/txAdmin/releases/latest
 Then replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.

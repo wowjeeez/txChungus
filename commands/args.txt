@@ -1,0 +1,2 @@
+To set custom FXServer arguments (like OneSync Infinity), do the following:
+https://i.imgur.com/KvEISH0.png

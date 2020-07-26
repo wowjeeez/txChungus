@@ -8,11 +8,11 @@
 		<a href="https://discord.gg/f3TsfvD"><img src="https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield"></img></a>
 	</h4>
 	<p align="center">
-		Just a random mildly offensive discord bot to do some crap that there are a bunch of other bots that can do but i'm too lazy to search for 🤷‍♂️.
+		Just a random offensive discord bot to do some crap that a bunch of other bots can do but i'm too lazy to look for 🤷‍♂️.
 	</p>
     <p align="center">
 		<b>I'm sharing just because "why not?". If you are looking for something cool, check <a href="https://github.com/tabarra/txAdmin">txAdmin</a> :)</b> <br>
-		(btw, I have zero intentions to keep this updated and working)
+		(BTW, I have zero intentions to keep this updated and working)
 	</p>
 </p>
 
@@ -34,8 +34,8 @@ bitch, bot, cache, clock, convars, docs, dual, localhost, logs, quickedit, scss,
 
 ## TODO:
 - `!mute <mention> <time>`
-- `!stats` printing txAdmin usage statistics?
-- `!insult <mention>` 
+- `!purge <number>`
+- Add rate limiter to `!m8b`
 - 🤷‍♂️
 
 ## Permissions required:

@@ -20,6 +20,7 @@ const answers = [
     `My sources say no`,
     `Outlook not so good`,
     `Very doubtful`,
+    `What about u ask again when your mom finishes her job?`,
 ];
 const shakingGif = `https://tenor.com/view/8ball-bart-simpson-shaking-shake-magic-ball-gif-17725278`;
 

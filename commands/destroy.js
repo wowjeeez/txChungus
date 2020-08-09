@@ -10,7 +10,7 @@ module.exports = {
     description: 'Insults a member.',
     async execute(message, args, config) {
         if (!message.mentions.users.size) {
-            return message.reply('you need to tag an user in order to mock them... fucktard');
+            return message.reply('you need to tag an user in order to destroy them... fucktard');
         }
         const isSelfMentioned = message.mentions.users.filter((u) => u.id == message.client.user.id);
         if(isSelfMentioned.size){

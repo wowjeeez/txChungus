@@ -25,7 +25,8 @@ const shakingGif = `https://tenor.com/view/8ball-bart-simpson-shaking-shake-magi
 
 module.exports = {
     description: 'Magic 8 ball knows everything.',
-    async execute(message, args, txChungus) {
+    async execute(message, args, config) {
+        // return message.reply('shut the fuck up')
         const question = message.content.substring(message.content.indexOf(' ')+1);
         const header = `<@${message.author.id}> asked:\n> ${question}\nMagic 8 Ball says:\n> `;
         const outMsg = await message.channel.send(header + shakingGif);

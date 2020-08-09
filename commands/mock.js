@@ -1,6 +1,6 @@
 module.exports = {
     description: 'Mocks a member.',
-    async execute(message, args, txChungus) {
+    async execute(message, args, config) {
         if (!message.mentions.users.size) {
             return message.reply('you need to tag an user in order to mock them... fucktard');
         }

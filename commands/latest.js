@@ -1,6 +1,5 @@
 //Requires
 const modulename = 'latest';
-const clone = require('clone');
 const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
 
@@ -41,7 +40,7 @@ module.exports = {
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
-                description: `It already comes with FXServer ${config.latestTXAdminVersionOnArtifact} and above, so no need to download it separately!`
+                description: `It already comes with FXServer **${config.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately!`
             });
             message.channel.send(mentionString, txVersionMsg);
 

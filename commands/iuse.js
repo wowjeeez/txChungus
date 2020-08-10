@@ -75,12 +75,19 @@ module.exports = {
             return replyDelete(message, `the correct usage is \`!iuse 1234\``);
         }
 
+        //Check for invalid numbers
+        if(buildNum < GlobalData.fxserverVersions.windows.critical){
+            scheduleDelete(message); 
+            return replyDelete(message, `this is below the latest critical build, you idiot.`);
+        }
+
         //Adds recommendation and trims array
         const prev = recommendations.find((x)=> x.author == message.author.id);
         if(prev){
             prev.build = buildNum;
         }else{
             recommendations.push({
+                nick: message.author.tag,
                 author: message.author.id,
                 build: buildNum
             });

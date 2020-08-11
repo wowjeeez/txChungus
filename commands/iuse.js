@@ -1,5 +1,5 @@
 //Requires
-const modulename = 'prune';
+const modulename = 'iuse';
 const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
@@ -33,7 +33,7 @@ const scheduleDelete = async(message, delay = 15) => {
         try {
             await message.delete();
         } catch (error) {
-            logError(`Failed to delete message: ${message.id}`);
+            logError(`Failed to delete message: [${message.author.tag}] ${message.content}`);
         }
     }, delay*1000);
 }

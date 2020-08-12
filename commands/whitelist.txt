@@ -1,0 +1,1 @@
+To enable txAdmin whitelist, go to Settings -> Player Manager -> Tick Enable Whitelist, after that you can accept whitelist requests from the Players tab, or by using /addwl CODE_HERE (You need to setup txAdmin bot and add your Discord ID in the admin manager)

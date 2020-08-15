@@ -86,16 +86,12 @@ module.exports = {
         }
 
         //Adds recommendation and trims array
-        const prev = recommendations.find((x)=> x.author == message.author.id);
-        if(prev){
-            prev.build = buildNum;
-        }else{
-            recommendations.push({
-                nick: message.author.tag,
-                author: message.author.id,
-                build: buildNum
-            });
-        }
+        recommendations = recommendations.filter(rec => rec.author !== message.author.id)
+        recommendations.push({
+            nick: message.author.tag,
+            author: message.author.id,
+            build: buildNum
+        });
         if(recommendations.length >= 50){
             recommendations = recommendations.slice(-maxRecommendations);
         }
@@ -150,6 +146,10 @@ module.exports = {
                 {
                     name: "Results:",
                     value: top3
+                },
+                {
+                    name: "Last 5 recommendations:",
+                    value: recommendations.slice(-5).reverse().map(x => x.build).join(', ')
                 }
             ]
         });

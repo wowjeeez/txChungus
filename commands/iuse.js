@@ -80,6 +80,10 @@ module.exports = {
             scheduleDelete(message); 
             return replyDelete(message, `this is below the latest critical build, you idiot.`);
         }
+        if(buildNum > GlobalData.fxserverVersions.windows.latest){
+            scheduleDelete(message); 
+            return replyDelete(message, `this is above the latest build.`);
+        }
 
         //Adds recommendation and trims array
         const prev = recommendations.find((x)=> x.author == message.author.id);
@@ -104,7 +108,6 @@ module.exports = {
             return replyDelete(message, `Well, error...`);
         }
 
-        //TODO: bunch of processing stuff
         //Process numbers
         const counter = {};
         recommendations.forEach(rec => {

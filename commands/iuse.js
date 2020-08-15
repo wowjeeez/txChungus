@@ -6,7 +6,7 @@ const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulen
 
 //Consts & vars
 const dataFile = `./data/recommendations_${GlobalData.profile}.json`;
-const maxRecommendations = 50;
+const maxRecommendations = 25;
 let recommendations;
 let targetMessage;
 
@@ -92,7 +92,7 @@ module.exports = {
             author: message.author.id,
             build: buildNum
         });
-        if(recommendations.length >= 50){
+        if(recommendations.length >= maxRecommendations){
             recommendations = recommendations.slice(-maxRecommendations);
         }
 
@@ -137,7 +137,7 @@ module.exports = {
             thumbnail: {
                 url: "https://i.imgur.com/57hsnZ4.png"
             },
-            description: `Please vote the build that you use and consider most stable.\nThis is a croudsourced fxserver build recomendation post.\nWe get the last 50 recommendations and calculate the 3 most popular ones.`,
+            description: `Please vote the build that you use and consider most stable.\nThis is a croudsourced fxserver build recomendation post based on the last **${maxRecommendations}** recommendations.`,
             fields: [
                 {
                     name: " How to vote:",

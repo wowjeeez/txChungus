@@ -6,7 +6,7 @@ const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulen
 
 //Consts & vars
 const dataFile = `./data/recommendations_${GlobalData.profile}.json`;
-const maxRecommendations = 25;
+const maxRecommendations = 10;
 let recommendations;
 let targetMessage;
 

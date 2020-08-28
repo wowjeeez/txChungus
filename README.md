@@ -22,7 +22,7 @@
 ## Commands:
 ### Dynamic
 - `!latest full`: prints the json response from both fxserver versions API;
-- `!latest`: prints txAdmin and fxserver latest versions, with instructions to install txAdmin (if needed) and the links to the fxserver artifacts page  with cachebusting every ~33 minustes;
+- `!latest`: prints txAdmin and fxserver latest versions, with instructions to install txAdmin (if needed) and the links to the fxserver artifacts page  with cachebusting every ~33 minutes;
 - `!mock`: Mocks an member profile picture
 - `!help`: Lists all the registered commands
 

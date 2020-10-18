@@ -34,7 +34,7 @@ bitch, bot, cache, clock, convars, docs, dual, localhost, logs, quickedit, scss,
 
 ## TODO:
 - `!mute <mention> <time>`
-- `!purge <number>`
+- `!prune <number>`
 - Add rate limiter to `!m8b`
 - 🤷‍♂️
 

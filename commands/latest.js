@@ -35,41 +35,45 @@ module.exports = {
             return;
         }
 
+        //Prepare message
+        const manualUpdateText = `Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
+        https://github.com/tabarra/txAdmin/releases/latest
+        Then replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
+        On Linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.`;
+
         //In case fxserver already have the latest txAdmin
         if(config.latestTXAdminVersionOnArtifact){
+            let isRecentBuildMessage = '';
+            if(config.latestTXAdminVersionOnArtifact + 32 > GlobalData.fxserverVersions.windows.latest){
+                isRecentBuildMessage = 'Click on the special link below to see the latest artifact.';
+            }
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
-                description: `It already comes with FXServer **${config.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately!`
-            });
-            message.channel.send(mentionString, txVersionMsg);
-
-            const fxVersionMsg = new MessageEmbed({
-                color: 0xEFAE87,
-                title: `FXServer Artifact:`,
+                description: `It already comes with FXServer **${config.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately! ${isRecentBuildMessage}`,
                 fields: [
                     {
-                        name: `📥 Latest Windows: ${GlobalData.fxserverVersions.windows.latest}`,
+                        name: `📥 Latest Windows Artifact: ${GlobalData.fxserverVersions.windows.latest}`,
                         value: GlobalData.fxserverVersions.windows.artifactsLink
                     },
                     {
-                        name: `📥 Latest Linux: ${GlobalData.fxserverVersions.linux.latest}`,
+                        name: `📥 Latest Linux Artifact: ${GlobalData.fxserverVersions.linux.latest}`,
                         value: GlobalData.fxserverVersions.linux.artifactsLink
-                    }
+                    },
+                    {
+                        name: "👉 Downloading separately from FXServer:",
+                        value: manualUpdateText
+                    },
                 ]
             });
-            return message.channel.send(fxVersionMsg);
+            return message.channel.send(mentionString, txVersionMsg);
 
         //In case this version is still not available with fxserver
         }else{
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
                 title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
-                description: `The most recent txAdmin version is not yet present in the fxserver artifacts.
-Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
-https://github.com/tabarra/txAdmin/releases/latest
-Then replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
-On linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.`
+                description: `The most recent txAdmin version is not yet present in the fxserver artifacts.\n${manualUpdateText}`
             });
             return message.channel.send(mentionString, txVersionMsg);
         }

@@ -1,0 +1,4 @@
+To receive adequate support provide the following:
+:desktop: | Screenshot of the diagnostics page.
+:desktop: | Screenshot of the error/issue.
+:keyboard: | Detailed description of the issue.

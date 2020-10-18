@@ -140,7 +140,7 @@ module.exports = {
             description: `Please vote the build that you use and consider most stable.\nThis is a croudsourced fxserver build recomendation post based on the last **${maxRecommendations}** recommendations.`,
             fields: [
                 {
-                    name: " How to vote:",
+                    name: "How to vote:",
                     value: "`!iuse <number>`"
                 },
                 {

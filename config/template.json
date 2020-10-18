@@ -1,0 +1,32 @@
+{
+    "token": "xxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "guild": "111111111111111111",
+    "prefix": "!",
+    "channels": {
+        "announce": "111111111111111111",
+        "showYourWork": "111111111111111111",
+        "recommendedBuild": {
+            "channel": "111111111111111111",
+            "message": "111111111111111111"
+        }
+    },
+    "commands": {
+        "admins": [
+            "111111111111111111"
+        ],
+        "latestTXAdminVersion": "v9.9.9",
+        "latestTXAdminVersionOnArtifact": 1234
+    },
+    "bannedStrings": [
+        "mega.nz",
+        "anonfiles",
+        "grabify.link",
+        "leancoding.co",
+        "stopify.co",
+        "freegiftcards.co",
+        "joinmy.site",
+        "curiouscat.club",
+        "catsnthings.fun",
+        "catsnthing.com"
+    ]
+}

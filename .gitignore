@@ -1,6 +1,6 @@
 # Custom:
 config/*
-!config/.gitkeep
+!config/template.json
 data/*
 !data/.gitkeep
 

@@ -9,6 +9,7 @@ const anyUndefined = (...args) => { return [...args].some(x => (typeof x === 'un
 
 module.exports = {
     description: 'Send instructions for the latest FXserver + txAdmin.',
+    aliases: ['update'],
     async execute(message, args, config) {
         //Check if we have the data
         if (anyUndefined(
@@ -24,6 +25,9 @@ module.exports = {
             mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
 
+        // const updateMessage = `${mentionString} The update is not yet available, but will be out *very very* Soon! Please check <#578045190955335691>!`;
+        // return message.channel.send(updateMessage);
+
         //If !latest full
         if(args.length && args[0] == 'full'){
             const tplWindows = 'FXServer windows versions info:\n```json\n{{replace}}```\n';
@@ -38,7 +42,7 @@ module.exports = {
         //Prepare message
         const manualUpdateText = `Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
         https://github.com/tabarra/txAdmin/releases/latest
-        Then replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
+        Then inside the artifacts folder, replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
         On Linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.`;
 
         //In case fxserver already have the latest txAdmin

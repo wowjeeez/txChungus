@@ -1,5 +1,5 @@
 :pencil: **Resetting the Master account:**
-        - Delete `txData/admins.json` *(will delete ALL admins)*;
+        - Delete `txData/admins.json` file *(will delete ALL admins)*;
         - Restart txAdmin;
         - Open the page and follow the instructions.
 :lock: **Resetting the password of a specific user:**

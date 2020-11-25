@@ -1,3 +1,3 @@
-If you are having problems with JWT or Code Exchange while logging, **make sure the clock of your computer is synchronized.**  
+If you are having problems with JWT or Code Exchange while logging, **make sure the clock of your VPS is synchronized with the internet.**  
 If you are not trying to create the master account (first login), you can always use the login + backup password.  
 If on windows, you can use this tool: <http://www.timesynctool.com> 

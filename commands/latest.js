@@ -5,6 +5,20 @@ const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulen
 
 //Helpers
 const anyUndefined = (...args) => { return [...args].some(x => (typeof x === 'undefined')) };
+const emojify = (src) => {
+    let out = src.toString();
+    out = out.replace('0', ':zero:');
+    out = out.replace('1', ':one:');
+    out = out.replace('2', ':two:');
+    out = out.replace('3', ':three:');
+    out = out.replace('4', ':four:');
+    out = out.replace('5', ':five:');
+    out = out.replace('6', ':six:');
+    out = out.replace('7', ':seven:');
+    out = out.replace('8', ':eight:');
+    out = out.replace('9', ':nine:');
+    return out;
+}
 
 
 module.exports = {
@@ -49,7 +63,7 @@ module.exports = {
         if(config.latestTXAdminVersionOnArtifact){
             let isRecentBuildMessage = '';
             if(config.latestTXAdminVersionOnArtifact + 32 > GlobalData.fxserverVersions.windows.latest){
-                isRecentBuildMessage = 'Click on the special link below to see the latest artifact.';
+                isRecentBuildMessage = 'Click on the **special link** below to see the latest artifact.';
             }
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
@@ -57,12 +71,12 @@ module.exports = {
                 description: `It already comes with FXServer **${config.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately! ${isRecentBuildMessage}`,
                 fields: [
                     {
-                        name: `📥 Latest Windows Artifact: ${GlobalData.fxserverVersions.windows.latest}`,
-                        value: GlobalData.fxserverVersions.windows.artifactsLink
+                        name: `📥 Latest Windows Artifact: ${emojify(GlobalData.fxserverVersions.windows.latest)}`,
+                        value: GlobalData.fxserverVersions.windows.artifactsLink + '_fix_cache_' + GlobalData.fxserverVersions.windows.latest 
                     },
                     {
-                        name: `📥 Latest Linux Artifact: ${GlobalData.fxserverVersions.linux.latest}`,
-                        value: GlobalData.fxserverVersions.linux.artifactsLink
+                        name: `📥 Latest Linux Artifact: ${emojify(GlobalData.fxserverVersions.linux.latest)}`,
+                        value: GlobalData.fxserverVersions.linux.artifactsLink + '_fix_cache_' + GlobalData.fxserverVersions.linux.latest
                     },
                     {
                         name: "👉 Downloading separately from FXServer:",

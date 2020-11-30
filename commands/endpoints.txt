@@ -1,0 +1,9 @@
+:point_right: Solution for the `No endpoint_add_* found` error:
+:one: open your `server.cfg` 
+:two: remove all `endpoint_add_*` lines
+:three: add this to the start of the file:
+```
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+```
+You can change the port as you like but do **not** change the 0.0.0.0

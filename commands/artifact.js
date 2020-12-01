@@ -7,16 +7,16 @@ const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulen
 const anyUndefined = (...args) => { return [...args].some(x => (typeof x === 'undefined')) };
 const emojify = (src) => {
     let out = src.toString();
-    out = out.replace('0', ':zero:');
-    out = out.replace('1', ':one:');
-    out = out.replace('2', ':two:');
-    out = out.replace('3', ':three:');
-    out = out.replace('4', ':four:');
-    out = out.replace('5', ':five:');
-    out = out.replace('6', ':six:');
-    out = out.replace('7', ':seven:');
-    out = out.replace('8', ':eight:');
-    out = out.replace('9', ':nine:');
+    out = out.replace(/0/g, ':zero:');
+    out = out.replace(/1/g, ':one:');
+    out = out.replace(/2/g, ':two:');
+    out = out.replace(/3/g, ':three:');
+    out = out.replace(/4/g, ':four:');
+    out = out.replace(/5/g, ':five:');
+    out = out.replace(/6/g, ':six:');
+    out = out.replace(/7/g, ':seven:');
+    out = out.replace(/8/g, ':eight:');
+    out = out.replace(/9/g, ':nine:');
     return out;
 }
 

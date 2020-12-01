@@ -1,1 +1,6 @@
-Please send a message to Zap Hosting support asking if they already support **txAdmin**.
+Even though **txAdmin** comes with the fxserver artifacts, ZAP Hosting doesn't support it and has no interest in doing so.
+We recommend you choosing a *good* VPS provider:
+- <https://www.ovhcloud.com/> **(recommended)**
+- <https://cloud.google.com/compute/> **($300 free trial!)**
+- <https://www.digitalocean.com/>
+- <https://www.vultr.com/>

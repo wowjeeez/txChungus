@@ -39,9 +39,6 @@ module.exports = {
             mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
 
-        // const updateMessage = `${mentionString} The update is not yet available, but will be out *very very* Soon! Please check <#578045190955335691>!`;
-        // return message.channel.send(updateMessage);
-
         //If !latest full
         if(args.length && args[0] == 'full'){
             const tplWindows = 'FXServer windows versions info:\n```json\n{{replace}}```\n';
@@ -52,7 +49,17 @@ module.exports = {
             message.channel.send(outLinux);
             return;
         }
+        
+        const updateMessage = `${mentionString} **To update to v3.1 you just need to update to artifact :three::three::five::two:!**
+Please use the two links below to download that _specific_ version:
+<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3352-2222c06a36a89286edb9fc45fdc2f62d4a548ead/server.zip
+<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3352-2222c06a36a89286edb9fc45fdc2f62d4a548ead/fx.tar.xz
+`;
+        return message.channel.send(updateMessage);
 
+        // const updateMessage = `${mentionString} The v3.1 update is not yet available, but will be out *very very* Soon! Please check <#578045190955335691>!`;
+        // return message.channel.send(updateMessage);
+        
         //Prepare message
         const manualUpdateText = `Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
         https://github.com/tabarra/txAdmin/releases/latest

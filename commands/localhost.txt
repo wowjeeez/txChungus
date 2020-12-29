@@ -2,4 +2,4 @@
 :one: Open port 40120 on your OS firewall (eg Windows Firewall);
 :two: Open port 40120 on your Hosting Company firewall (eg OVH, AWS, Google, etc);
 :three: Open `http://your-public-ip:40120/` in your browser (do not use `localhost`).
-:warning: **If this does not work, then it's an issue with your networking and NOT txAdmin!**
+:warning: **This is NOT an issue with txAdmin. Please configure your networking correctly!**

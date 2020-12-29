@@ -1,0 +1,4 @@
+<:linux:780972840454979604> Running FXServer on Linux is **NOT** recommended.
+Reason extracted from the official FiveM documentation:
+> Note that the Linux version of FXServer is only provided as a courtesy port due to issues regarding Linux distribution compatibility and availability of diagnostic tools for native C++ code. 
+> **If you're experiencing any issues, you're more likely to see them fixed if you use the Windows version.**

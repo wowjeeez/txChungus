@@ -6,7 +6,7 @@ cleanTerminal();
 setTTYTitle();
 
 //Import config and start bot
-if(process.argv.length != 3){
+if (process.argv.length != 3) {
     logError(`Usage: node index <profile>`);
     process.exit();
 }
@@ -22,7 +22,7 @@ process.on('unhandledRejection', (err) => {
     logError(err.message)
     dir(err.stack)
 });
-process.on('uncaughtException', function(err) {
+process.on('uncaughtException', function (err) {
     logError("Ohh nooooo - uncaughtException")
     logError(err.message)
     dir(err.stack)

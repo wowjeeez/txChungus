@@ -24,11 +24,19 @@ const answers = [
 const shakingGif = `https://tenor.com/view/8ball-bart-simpson-shaking-shake-magic-ball-gif-17725278`;
 
 module.exports = {
+    rateLimit: {
+        max: 1,
+        resetTime: 30000, // in ms
+        global: true // Rate limit individuals or everyone at once
+    },
     description: 'Magic 8 ball knows everything.',
-    async execute(message, args, config) {
+    async execute (message, args, config) {
         // return message.reply('shut the fuck up')
-        const question = message.content.substring(message.content.indexOf(' ')+1);
-        const header = `<@${message.author.id}> asked:\n> ${question}\nMagic 8 Ball says:\n> `;
+        const question = message.content.substring(message.content.indexOf(' ') + 1);
+        const header =
+            `<@${message.author.id}> asked:
+            > ${question}\nMagic 8 Ball says:
+            > `;
         const outMsg = await message.channel.send(header + shakingGif);
         const answer = answers[Math.floor(Math.random() * answers.length)];
         setTimeout(() => {

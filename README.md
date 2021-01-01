@@ -4,7 +4,7 @@
 	</h1>
 	<h4 align="center">
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License: CC BY-NC-SA 4.0"></img></a>
-        &nbsp; 
+        &nbsp;
 		<a href="https://discord.gg/f3TsfvD"><img src="https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield"></img></a>
 	</h4>
 	<p align="center">
@@ -27,16 +27,16 @@
 - `!help`: Lists all the registered commands
 
 ### Static:
-(those are just the macros I have on my discord server)  
+(those are just the macros I have on my discord server)
 ```
 bitch, bot, cache, clock, convars, docs, dual, localhost, logs, quickedit, scss, t, translate, txdata, vc, zap
 ```
 
 ## TODO:
-- `!mute <mention> <time>`
-- `!prune <number>`
-- Add rate limiter to `!m8b`
-- 🤷‍♂️
+- [x] `!mute <mention> <time>`
+- [x] `!prune <number>`
+- [x] Add rate limiter to `!m8b`
+- [ ] 🤷‍♂️
 
 ## Permissions required:
 https://discordapi.com/permissions.html#201681986

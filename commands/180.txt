@@ -1,6 +1,6 @@
 In 3 minutes I can fully cook Instant Cup Noodles, yet your server can't start in that time?  
 You for sure:
 a) Have way too many resources. You know all those oversized asset warnings? yeah that's a thing.
-b) Have some stop-loading resources like chocohax.
+b) Have some slow-loading resources like chocohax.
 c) Have a slow CPU.
 Do not try to change txAdmin, fix YOUR server.

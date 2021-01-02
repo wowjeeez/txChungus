@@ -36,7 +36,7 @@ module.exports = {
         const header =
             `<@${message.author.id}> asked:
             > ${question}\nMagic 8 Ball says:
-            > `;
+            > `.replace(/  +/g, ''); // Remove indentation because javascript is stupid..
         const outMsg = await message.channel.send(header + shakingGif);
         const answer = answers[Math.floor(Math.random() * answers.length)];
         setTimeout(() => {

@@ -9,11 +9,13 @@ module.exports = {
         const [static, dynamic] = GlobalData.commands.partition(c => c.static);
 
         message.channel.send(
-            `Static commands:
-            \`\`\`${[...static.keys()].join(', ')}\`\`\`
-            Dynamic commands:
-            \`\`\`${[...dynamic.keys()].join(', ')}\`\`\`
-            `.replace(/  +/g, '')  // Remove indentation because javascript is stupid..
+            `\`\`\`diff
+            + Static commands:
+            ${[...static.keys()].join(', ')}
+
+            + Dynamic commands:
+            ${[...dynamic.keys()].join(', ')}
+            \`\`\``.replace(/  +/g, '')  // Remove indentation because javascript is stupid..
         );
 
     },

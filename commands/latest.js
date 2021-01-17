@@ -50,21 +50,35 @@ module.exports = {
             return;
         }
         
-        const updateMessage = `${mentionString} **To update to v3.1 you just need to update to artifact :three::three::five::two:!**
+        const updateMessage = `${mentionString} **To update to v3.2.3 you just need to update to artifact :three::four::zero::four:!**
 Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3352-2222c06a36a89286edb9fc45fdc2f62d4a548ead/server.zip
-<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3352-2222c06a36a89286edb9fc45fdc2f62d4a548ead/fx.tar.xz
+<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3404-c17da3a2d5fdda85d8758b4acf6fd980ac512821/server.zip
+<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3404-c17da3a2d5fdda85d8758b4acf6fd980ac512821/fx.tar.xz
 `;
         return message.channel.send(updateMessage);
 
-        // const updateMessage = `${mentionString} The v3.1 update is not yet available, but will be out *very very* Soon! Please check <#578045190955335691>!`;
+        const gifs = [
+            'https://tenor.com/view/shaquille-o-neal-excited-shaking-cant-wait-gif-13783587',
+            'https://tenor.com/view/soon-okay-real-soon-very-quickly-in-a-second-just-a-moment-gif-15029375',
+            'https://tenor.com/view/daddys-home2-daddys-home2gifs-jon-lithgow-reunion-waiting-gif-9683398',
+            'https://tenor.com/view/cat-driving-serious-cat-driving-hold-on-gif-16076083',
+            'https://tenor.com/view/judge-judy-double-time-faster-hurry-gif-7566976',
+            'https://tenor.com/view/mr-bean-checking-time-waiting-gif-11570520',
+            'https://tenor.com/view/off-work-almost-sleepy-gif-13396687',
+        ]
+
+        const gifLink = gifs[Math.floor(Math.random() * gifs.length)]
+
+        // const updateMessage = `${mentionString} The v3.2.3 update will be available **19:00 BRT!** Stay tunned!`;
+        // const updateMessage = `${mentionString} its almost there I promise!!! \n${gifLink}`;
         // return message.channel.send(updateMessage);
         
         //Prepare message
-        const manualUpdateText = `Download \`monitor-${config.latestTXAdminVersion}.zip\` from the following link:
+        const manualUpdateText = `Download \`monitor.zip\` from the following link:
         https://github.com/tabarra/txAdmin/releases/latest
         Then inside the artifacts folder, replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
-        On Linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.`;
+        On Linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.
+        **DON'T FORGET TO RESTART txAdmin!**`;
 
         //In case fxserver already have the latest txAdmin
         if(config.latestTXAdminVersionOnArtifact){

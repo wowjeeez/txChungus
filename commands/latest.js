@@ -50,10 +50,10 @@ module.exports = {
             return;
         }
         
-        const updateMessage = `${mentionString} **To update to v3.2.3 you just need to update to artifact :three::four::zero::four:!**
+        const updateMessage = `${mentionString} **To update to v3.3.0 you just need to update to artifact :three::five::zero::two:!**
 Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3404-c17da3a2d5fdda85d8758b4acf6fd980ac512821/server.zip
-<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3404-c17da3a2d5fdda85d8758b4acf6fd980ac512821/fx.tar.xz
+<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3502-dbadcc2374d1eaa889563182ae8532ab56d7eb9d/server.zip
+<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3502-dbadcc2374d1eaa889563182ae8532ab56d7eb9d/fx.tar.xz
 `;
         return message.channel.send(updateMessage);
 
@@ -66,11 +66,10 @@ Please use the two links below to download that _specific_ version:
             'https://tenor.com/view/mr-bean-checking-time-waiting-gif-11570520',
             'https://tenor.com/view/off-work-almost-sleepy-gif-13396687',
         ]
-
         const gifLink = gifs[Math.floor(Math.random() * gifs.length)]
 
         // const updateMessage = `${mentionString} The v3.2.3 update will be available **19:00 BRT!** Stay tunned!`;
-        // const updateMessage = `${mentionString} its almost there I promise!!! \n${gifLink}`;
+        // const updateMessage = `${mentionString} The v3.3.0 update will be available very _very_ very _very_ very _very_ soon! Stay tuned! \n${gifLink}`;
         // return message.channel.send(updateMessage);
         
         //Prepare message

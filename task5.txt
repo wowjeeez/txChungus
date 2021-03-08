@@ -1,6 +1,5 @@
-If task 5 [connect_database] is failing when setting up PlumeESX, there is an easy fix!
-:one: Download and install a MySQL server program (such as nginx, XAMPP, etc.)
-:two: Run the software and start the service called "MySQL".
-:three: Restart the setup of PlumeESX and that task will continue with no issues.
-If task 6 then fails, enable the "wipe existing databases" option, and resume PlumeESX installation.
-It will overwrite your existing database if you chose the same name.
+If task 5 `[connect_database]` is failing when setting up PlumeESX, there is an easy fix!
+:one: Download and install a XAMPP: <https://www.apachefriends.org/>
+:two: Start MySQL: <https://i.imgur.com/UNnKmnt.png>
+:three: On txAdmin, click on the Cancel button and try again.
+**DO NOT** change any database configuration in the deployer step 2 (like username, password or database name).

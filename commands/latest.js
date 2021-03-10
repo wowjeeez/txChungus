@@ -23,7 +23,7 @@ const emojify = (src) => {
 
 module.exports = {
     description: 'Send instructions for the latest FXserver + txAdmin.',
-    aliases: ['update'],
+    aliases: ['update', 'u'],
     async execute(message, args, config) {
         //Check if we have the data
         if (anyUndefined(
@@ -50,12 +50,10 @@ module.exports = {
             return;
         }
         
-        const updateMessage = `${mentionString} **To update to v3.3.0 you just need to update to artifact :three::five::zero::two:!**
+        const updateMessage = `${mentionString} **To update to v3.4.0 you just need to update to artifact :three::six::two::two:!**
 Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3502-dbadcc2374d1eaa889563182ae8532ab56d7eb9d/server.zip
-<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3502-dbadcc2374d1eaa889563182ae8532ab56d7eb9d/fx.tar.xz
-`;
-        return message.channel.send(updateMessage);
+<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3622-a1cd64b01533704dde6fe5b43d85321c3336fef0/server.7z
+<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3622-a1cd64b01533704dde6fe5b43d85321c3336fef0/fx.tar.xz`;
 
         const gifs = [
             'https://tenor.com/view/shaquille-o-neal-excited-shaking-cant-wait-gif-13783587',
@@ -67,10 +65,8 @@ Please use the two links below to download that _specific_ version:
             'https://tenor.com/view/off-work-almost-sleepy-gif-13396687',
         ]
         const gifLink = gifs[Math.floor(Math.random() * gifs.length)]
-
-        // const updateMessage = `${mentionString} The v3.2.3 update will be available **19:00 BRT!** Stay tunned!`;
-        // const updateMessage = `${mentionString} The v3.3.0 update will be available very _very_ very _very_ very _very_ soon! Stay tuned! \n${gifLink}`;
-        // return message.channel.send(updateMessage);
+        // const updateMessage = `${mentionString} The v3.4.0 update will be available very _very_ very _very_ very _very_ soon! Stay tuned! \n${gifLink}`;
+        return message.channel.send(updateMessage);
         
         //Prepare message
         const manualUpdateText = `Download \`monitor.zip\` from the following link:

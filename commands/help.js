@@ -15,7 +15,7 @@ module.exports = {
 
             + Dynamic commands:
             ${[...dynamic.keys()].join(', ')}
-            \`\`\``.replace(/  +/g, '')  // Remove indentation because javascript is stupid..
+            \`\`\``.replace(/\t/g, '')  // Remove indentation because javascript is stupid..
         );
 
     },

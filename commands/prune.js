@@ -21,7 +21,7 @@ module.exports = {
 
         //Attempt to delete in bulk
         try {
-            await message.channel.bulkDelete(amount, true)
+            await message.channel.bulkDelete(amount, true);
         } catch (error) {
             dir(error)
             return message.reply(`well, apparently I can't.`);

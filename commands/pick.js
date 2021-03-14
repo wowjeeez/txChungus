@@ -14,15 +14,15 @@ const rndFromArray = (arr) => {
 module.exports = {
 	rateLimit: {
 		max: 1,
-		resetTime: 30000, // in ms
+		resetTime: 15000, // in ms
 		global: true // Rate limit individuals or everyone at once
 	},
-	description: 'Magic 8 ball knows everything.',
+	description: 'Will pick one between few options.',
 	async execute (message, args) {
-		const thingsToPick = args.join(' ').split(/\sOR\s/g)
+		const userOptions = args.join(' ').split(/(?:or|[,;/\|])+/i);
+		const thingsToPick = userOptions.map(x => x.trim()).filter(x => x.length);
 
-		if (thingsToPick.length <= 1) return message.channel.send('Stop trying me to pick from nothing dickhead!')
-
+		if (thingsToPick.length <= 1) return message.channel.send('Stop trying me to pick from nothing, dickhead!');
 		const header =
 			`${message.author} asked me to pick from:
 			> ${thingsToPick.join(', ')}

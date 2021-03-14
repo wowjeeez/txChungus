@@ -1,9 +1,9 @@
 **The issue you are having is not caused by txAdmin itself.**
 If you are saying `but only happens when I start the server with tx`, then these might be the reason:
 :zero: Please go to the settings and make sure the OneSync option selected is compatible with your scripts!
-:one: You are using different artifacts, which can cause differences (specially when updating);
+:one: You are using different artifacts, which can cause differences (especially when updating);
 :two: You selected different `server data` or `server.cfg` when running with txAdmin;
 :three: Is txAdmin restarting your server after a crash? Congratulations it is doing exactly what it is supposed to do;
-:four: Or you are just plain wrong... ever heard of confirmation bias? Bet you didn't tested your hypothesis well enough!
+:four: Or you are just plain wrong... ever heard of confirmation bias? Bet you didn't test your hypothesis well enough!
 
 txAdmin was added to FiveM because it is very good at what it does, and has literally zero compatibility issues - tested by thousands!

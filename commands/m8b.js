@@ -33,11 +33,12 @@ module.exports = {
     async execute (message, args, config) {
         // return message.reply('shut the fuck up')
         const question = message.content.substring(message.content.indexOf(' ') + 1);
-        const header =
-            `<@${message.author.id}> asked:
-            > ${question}
-            Magic 8 Ball says:
-            > `.replace(/\t/g, ''); // Remove indentation because javascript is stupid..
+        const header = [
+            `<@${message.author.id}> asked:`,
+            `> ${question}`,
+            `Magic 8 Ball says:`,
+            `> `
+        ].join('\n');
         const outMsg = await message.channel.send(header + shakingGif);
         const answer = answers[Math.floor(Math.random() * answers.length)];
         setTimeout(() => {

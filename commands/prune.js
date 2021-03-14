@@ -10,6 +10,8 @@ module.exports = {
         if(!config.admins.includes(message.author.id)){
             return message.reply(`shut up`);
         }
+        //if above 100, prune 100
+        // leave a prune message behind
 
         //Check amount
         const amount = parseInt(args[0]) + 1;

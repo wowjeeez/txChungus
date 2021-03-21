@@ -17,7 +17,7 @@ module.exports = {
     },
     description: 'Will pick one between few options.',
     async execute (message, args) {
-        const userOptions = args.join(' ').split(/(?:or|[,;/\|\n])+/i);
+        const userOptions = args.join(' ').split(/(?:\s+or\s+|[,;/\|\n])+/i);
         const thingsToPick = userOptions.map(x => x.trim()).filter(x => x.length);
 
         if (thingsToPick.length <= 1) return message.channel.send('Stop trying me to pick from nothing, dickhead!');

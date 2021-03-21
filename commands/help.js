@@ -7,16 +7,15 @@ module.exports = {
     description: 'Lists all the registered commands.',
     async execute (message, args, config) {
         const [static, dynamic] = GlobalData.commands.partition(c => c.static);
-
-        message.channel.send(
-            `\`\`\`diff
-            + Static commands:
-            ${[...static.keys()].join(', ')}
-
-            + Dynamic commands:
-            ${[...dynamic.keys()].join(', ')}
-            \`\`\``.replace(/\t/g, '')  // Remove indentation because javascript is stupid..
-        );
-
+        const msgLines = [
+            `\`\`\`diff`,
+            `+ Static commands:`,
+            [...static.keys()].join(', '),
+            ``,
+            `+ Dynamic commands:`,
+            [...dynamic.keys()].join(', '),
+            `\`\`\``,
+        ];
+        message.channel.send(msgLines.join('\n'));
     },
 };

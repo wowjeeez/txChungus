@@ -20,9 +20,13 @@ module.exports = {
         const outLines = [];
         for (let i = 0; i < GlobalData.mutes.length; i++) {
             const mute = GlobalData.mutes[i];
-            const member = await message.guild.members.fetch(mute.id);
+            let name = 'Unknown';
+            try{
+                const member = await message.guild.members.fetch(mute.id);
+                name = member.displayName
+            }catch{}
             const expiration = humanizeDuration(mute.expire - Date.now(), { round: true });
-            const who = `[${member.id}][${member.displayName}]`;
+            const who = `[${mute.id}][${name}]`;
             outLines.push(`${code(who)} is muted for more ${code(expiration)} for ${code(mute.reason)}.`);
         }
 

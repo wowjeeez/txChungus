@@ -1,0 +1,9 @@
+**How to open ports for FXServer:**
+:one: Open Windows Defender Firewall and click on advanced settings.
+:two: Open Inbound Rules.
+:three: Create a new rule with the following options: Port, TCP, Specific Local Ports: 30120, Allow the connection, Domain, Private, and Public, and create a name that you can remember (ex. 30120 TCP/UDP)
+:four: Repeat step **3**, but select UDP as the port protocol. Do not change anything else.
+*For localhosted/home hosted servers, do the following (for a VPS/dedicated server, skip to step 6):*
+:five: Look up your router model and how to open ports with it (also known as port forwarding in this case).
+*For a VPS/dedicated server, do the following:*
+:six: Check the documentation of your hosting service or contact their support team and find the firewall for the VPS, you will have to open the same ports as you did on Windows Defender. The firewall is commonly found on the dashboard of your host.

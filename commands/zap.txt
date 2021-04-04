@@ -1,4 +1,4 @@
 #alias z
 #file https://i.imgur.com/baw2cf2.png
-:rocket: The easiest way to get a DDoS protected & preconfigured FiveM txAdmin server is on ZAP :rocket:
+:rocket: The easiest way to get a DDoS protected & pre-configured FiveM txAdmin server is on ZAP :rocket:
 :point_right: :point_right: https://zap-hosting.com/txAdmin :point_left: :point_left: 

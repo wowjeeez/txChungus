@@ -1,0 +1,4 @@
+With the latest Discord update, they introduced a new kind of channel called "Stage".  
+If you have one of those on your Discord server, the txAdmin Discord bot WILL NOT work.  
+This is a known issue, and we will try to fix in april 5th's update.
+For now you can delete the live stage channel or disable txAdmin bot.

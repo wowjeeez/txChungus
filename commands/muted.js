@@ -1,9 +1,9 @@
 //Requires
-const modulename = 'unmute';
-const humanizeDuration = require('humanize-duration');
-const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
-
-const code = (x) => `\`${x}\``;
+const modulename = "unmute";
+const { codeBlock } = require("../lib/utils");
+const { logError } = require("../lib/console")(modulename);
+const { MessageEmbed } = require("discord.js");
+const humanizeDuration = require("humanize-duration");
 
 module.exports = {
     description: 'Lists all the mutes',
@@ -13,23 +13,45 @@ module.exports = {
             return message.reply(`You're not allowed to use this command`);
         }
 
-        if(!GlobalData.mutes.length){
+        if (!GlobalData.mutes.length) {
             return await message.channel.send(`Nobody is muted right now.`);
         }
 
-        const outLines = [];
-        for (let i = 0; i < GlobalData.mutes.length; i++) {
-            const mute = GlobalData.mutes[i];
-            let name = 'Unknown';
-            try{
-                const member = await message.guild.members.fetch(mute.id);
-                name = member.displayName
-            }catch{}
-            const expiration = humanizeDuration(mute.expire - Date.now(), { round: true });
-            const who = `[${mute.id}][${name}]`;
-            outLines.push(`${code(who)} is muted for more ${code(expiration)} for ${code(mute.reason)}.`);
+        const msgEmbed = new MessageEmbed()
+            .setTitle("Muted Users")
+            .setColor("AQUA")
+            .setTimestamp();
+
+        for (const mutedUser of GlobalData.mutes) {
+            const member = await message.guild.members
+                .fetch(mutedUser.id)
+                .catch(() => logError(`Error fetching user`));
+
+            const durationOptions = {
+                round: true,
+                largest: 2,
+                spacer: "",
+                language: "shortEn",
+                languages: {
+                    shortEn: {
+                        w: () => "w",
+                        d: () => "d",
+                        h: () => "h",
+                        m: () => "m",
+                        s: () => "s",
+                    },
+                },
+            };
+
+            const fieldValue = `${mutedUser.reason}\n${codeBlock(
+                "Unmuted " +
+                humanizeDuration(mutedUser.expire - Date.now(), durationOptions)
+            )}`;
+
+            const fieldTitle = member.displayName || "Unknown";
+            msgEmbed.addField(fieldTitle, fieldValue, true);
         }
 
-        return await message.channel.send(outLines.join('\n'));
-    }
+        return await message.channel.send(msgEmbed);
+    },
 };

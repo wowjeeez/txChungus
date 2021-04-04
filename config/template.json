@@ -15,7 +15,8 @@
             "111111111111111111"
         ],
         "latestTXAdminVersion": "v9.9.9",
-        "latestTXAdminVersionOnArtifact": 1234
+        "latestTXAdminVersionOnArtifact": 1234,
+        "mutedRole": "11111111111111111111"
     },
     "bannedStrings": [
         "mega.nz",
@@ -28,5 +29,5 @@
         "curiouscat.club",
         "catsnthings.fun",
         "catsnthing.com"
-    ]
+    ],
 }

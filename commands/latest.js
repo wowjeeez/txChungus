@@ -1,29 +1,13 @@
 //Requires
 const modulename = 'latest';
+const { emojify, anyUndefined } = require("../lib/utils");
 const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
-
-//Helpers
-const anyUndefined = (...args) => { return [...args].some(x => (typeof x === 'undefined')) };
-const emojify = (src) => {
-    let out = src.toString();
-    out = out.replace(/0/g, ':zero:');
-    out = out.replace(/1/g, ':one:');
-    out = out.replace(/2/g, ':two:');
-    out = out.replace(/3/g, ':three:');
-    out = out.replace(/4/g, ':four:');
-    out = out.replace(/5/g, ':five:');
-    out = out.replace(/6/g, ':six:');
-    out = out.replace(/7/g, ':seven:');
-    out = out.replace(/8/g, ':eight:');
-    out = out.replace(/9/g, ':nine:');
-    return out;
-}
 
 
 module.exports = {
     description: 'Send instructions for the latest FXserver + txAdmin.',
-    aliases: ['update', 'u'],
+    aliases: [],
     async execute(message, args, config) {
         //Check if we have the data
         if (anyUndefined(
@@ -40,7 +24,7 @@ module.exports = {
         }
 
         //If !latest full
-        if(args.length && args[0] == 'full'){
+        if(true || args.length && args[0] == 'full'){
             const tplWindows = 'FXServer windows versions info:\n```json\n{{replace}}```\n';
             const outWindows = tplWindows.replace('{{replace}}', JSON.stringify(GlobalData.fxserverVersions.windows, null, 2));
             message.channel.send(outWindows);
@@ -49,31 +33,9 @@ module.exports = {
             message.channel.send(outLinux);
             return;
         }
-        
-        const updateMessage = `${mentionString} **To update to v3.6.4 you just need to update to artifact :three::seven::eight::four:!**
-Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/server.7z
-<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/fx.tar.xz`;
 
-        const gifs = [
-            'https://tenor.com/view/shaquille-o-neal-excited-shaking-cant-wait-gif-13783587',
-            'https://tenor.com/view/soon-okay-real-soon-very-quickly-in-a-second-just-a-moment-gif-15029375',
-            'https://tenor.com/view/daddys-home2-daddys-home2gifs-jon-lithgow-reunion-waiting-gif-9683398',
-            'https://tenor.com/view/cat-driving-serious-cat-driving-hold-on-gif-16076083',
-            'https://tenor.com/view/judge-judy-double-time-faster-hurry-gif-7566976',
-            'https://tenor.com/view/mr-bean-checking-time-waiting-gif-11570520',
-            'https://tenor.com/view/off-work-almost-sleepy-gif-13396687',
-        ]
-        const gifLink = gifs[Math.floor(Math.random() * gifs.length)]
-        // const updateMessage = `${mentionString} The v3.6.0 update has just been released and will be available for download with the artifacts in a few hours! \n${gifLink}`;
-        return message.channel.send(updateMessage);
+        //FIXME: idk if I should delete this command or not...
         
-        //Prepare message
-        const manualUpdateText = `Download \`monitor.zip\` from the following link:
-        https://github.com/tabarra/txAdmin/releases/latest
-        Then inside the artifacts folder, replace the \`citizen/system_resources/monitor\` folder contents with the files from the downloaded ZIP.
-        On Linux, this folder is inside \`alpine/opt/cfx-server/citizen/system_resources\`.
-        **DON'T FORGET TO RESTART txAdmin!**`;
 
         //In case fxserver already have the latest txAdmin
         if(config.latestTXAdminVersionOnArtifact){

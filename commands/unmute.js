@@ -15,7 +15,7 @@ module.exports = {
 
         if (mention.roles.cache.has(config.mutedRole) || GlobalData.mutes.find((mute) => mute.id == mention.user.id)) {
             mention.roles.remove(config.mutedRole).catch(() => message.channel.send('Something terrible just happened, fuck. Most likely missing permissions'));
-            GlobalData.removeMute(mention.user.id)
+            GlobalData.removeMute(mention.user.id);
 
             message.channel.send(`Unmuted \`${mention.displayName}\`.`);
             mention.send(`You have been unmuted from ${message.guild.name}.`).catch(() => logWarn("Failed to send a dm, propably disabled dms"))

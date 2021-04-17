@@ -2,7 +2,6 @@
 const modulename = "unmute";
 const { codeBlock } = require("../lib/utils");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
-const { MessageEmbed } = require("discord.js");
 const humanizeDuration = require("humanize-duration");
 
 //Consts
@@ -17,6 +16,9 @@ const durationOptions = {
     language: "shortEn",
     languages: {
         shortEn: {
+            y: () => "y",
+            mo: () => "mo",
+            w: () => "w",
             w: () => "w",
             d: () => "d",
             h: () => "h",
@@ -35,13 +37,21 @@ module.exports = {
             return message.reply(`You're not allowed to use this command`);
         }
         const guild = message.guild;
-        const showTime = (args.length && args[0] == 'full');
+        const showFull = (args.length && args[0] == 'full');
 
         if (!GlobalData.mutes.length) {
             return await message.channel.send(`Nobody is muted right now.`);
         }
 
+        try {
+            await guild.members.fetch();
+        } catch (error) {
+            return await message.channel.send(`Could not refresh members cache.`);
+        }
+
+
         //Calculating ranges
+        let mutedAndLeft = 0;
         const now = Date.now();
         const mutedLessHour = [];
         const mutedLessDay = [];
@@ -49,36 +59,32 @@ module.exports = {
         const mutedOverWeek = [];
         GlobalData.mutes.forEach(mutedUser => {
             const expiration = mutedUser.expire - now;
-            if (expiration < hour) {
-                mutedLessHour.push(mutedUser);
-            } else if (expiration < day) {
-                mutedLessDay.push(mutedUser);
-            } else if (expiration < week) {
-                mutedLessWeek.push(mutedUser);
+            const member = guild.members.cache.get(mutedUser.id);
+            if (member) {
+                mutedUser.member = member;
+                if (expiration < hour) {
+                    mutedLessHour.push(mutedUser);
+                } else if (expiration < day) {
+                    mutedLessDay.push(mutedUser);
+                } else if (expiration < week) {
+                    mutedLessWeek.push(mutedUser);
+                } else {
+                    mutedOverWeek.push(mutedUser);
+                }
             } else {
-                mutedOverWeek.push(mutedUser);
+                mutedAndLeft++;
             }
         });
 
-        const muteRangeInfo = async (range) => {
+        const muteRangeInfo = (range) => {
             if (range.length) {
                 const out = [];
                 for (let i = 0; i < range.length; i++) {
                     const mute = range[i];
-                    let memberName;
-                    try{
-                        const member = await guild.members.fetch(mute.id);
-                        memberName = member.displayName;
-                    }catch{
-                        memberName = mute.id;
-                    }
-                    if(showTime){
-                        const expTime = humanizeDuration(mute.expire - now, durationOptions).padStart(7, ' ');
-                        const expTimeTag = `[${expTime}]`;
-                        out.push(` ➤ ${codeBlock(expTimeTag)} ${codeBlock(memberName)}: ${mute.reason};`);
-                    }else{
-                        out.push(` ➤ ${codeBlock(memberName)}: ${mute.reason}`);
-                    }
+                    const memberName = mute.member.displayName || 'unknown';
+                    const expTime = humanizeDuration(mute.expire - now, durationOptions).padStart(7, ' ');
+                    const expTimeTag = `[${expTime}]`;
+                    out.push(` ➤ ${codeBlock(expTimeTag)} ${codeBlock(memberName)}: ${mute.reason};`);
                 }
                 return out.join('\n');
             } else {
@@ -87,12 +93,42 @@ module.exports = {
         }
 
         //Message time :)
-        const messageLines = [
-            `:zipper_mouth: **Expiration in less than one hour:**`, await muteRangeInfo(mutedLessHour), null,
-            `:zipper_mouth: **Expiration in less than one day:**`, await muteRangeInfo(mutedLessDay), null,
-            `:zipper_mouth: **Expiration in less than one week:**`, await muteRangeInfo(mutedLessWeek), null,
-            `:zipper_mouth: **Lol forget about those loosers:**`, await muteRangeInfo(mutedOverWeek), null,
-        ]
+        const messageLines = []
+        if (mutedLessHour.length || showFull) {
+            messageLines.push(
+                `:zipper_mouth: **Expiration in less than one hour:**`,
+                muteRangeInfo(mutedLessHour),
+                null,
+            );
+        }
+        if (mutedLessDay.length || showFull) {
+            messageLines.push(
+                `:zipper_mouth: **Expiration in less than one day:**`,
+                muteRangeInfo(mutedLessDay),
+                null,
+            );
+        }
+        if (mutedLessWeek.length || showFull) {
+            messageLines.push(
+                `:zipper_mouth: **Expiration in less than one week:**`,
+                muteRangeInfo(mutedLessWeek),
+                null,
+            );
+        }
+        if (mutedOverWeek.length || showFull) {
+            if (showFull) {
+                messageLines.push(
+                    `:zipper_mouth: **Lol forget about those loosers:**`,
+                    muteRangeInfo(mutedOverWeek),
+                    null,
+                );
+            } else {
+                messageLines.push(`<:rip:740790507432574987> **${mutedOverWeek.length} losers that we will never remember**`);
+            }
+        }
+        if (mutedAndLeft) {
+            messageLines.push(`<:pog:796969505540538378> **${mutedAndLeft} who bitched out...**`);
+        }
         return await message.channel.send(messageLines.join('\n'));
     },
 };

@@ -1,3 +1,1 @@
-With the latest Discord update, they introduced a new kind of channel called "Stage".  
-If you have one of those on your Discord server, the txAdmin Discord bot WILL NOT work.  
-**This is a known issue, and will be fixed in April 5th update (v3.6.0).**
+Update to v3.6 where the issue was already solved.

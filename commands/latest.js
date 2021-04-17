@@ -50,10 +50,10 @@ module.exports = {
             return;
         }
         
-        const updateMessage = `${mentionString} **To update to v3.4.0 you just need to update to artifact :three::six::two::two:!**
+        const updateMessage = `${mentionString} **To update to v3.6.4 you just need to update to artifact :three::seven::eight::four:!**
 Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3622-a1cd64b01533704dde6fe5b43d85321c3336fef0/server.7z
-<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3622-a1cd64b01533704dde6fe5b43d85321c3336fef0/fx.tar.xz`;
+<:windows:791692679419265044> https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/server.7z
+<:linux:780972840454979604> https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/fx.tar.xz`;
 
         const gifs = [
             'https://tenor.com/view/shaquille-o-neal-excited-shaking-cant-wait-gif-13783587',
@@ -65,7 +65,7 @@ Please use the two links below to download that _specific_ version:
             'https://tenor.com/view/off-work-almost-sleepy-gif-13396687',
         ]
         const gifLink = gifs[Math.floor(Math.random() * gifs.length)]
-        // const updateMessage = `${mentionString} The v3.4.0 update will be available very _very_ very _very_ very _very_ soon! Stay tuned! \n${gifLink}`;
+        // const updateMessage = `${mentionString} The v3.6.0 update has just been released and will be available for download with the artifacts in a few hours! \n${gifLink}`;
         return message.channel.send(updateMessage);
         
         //Prepare message

@@ -21,17 +21,24 @@ module.exports = {
     aliases: ['update', 'u'],
     async execute(message, args, config) {
         //Well, let's state the obvious: editing here is not ideal, but that's how we gonna do!
-        const latest = 'v3.6.4';
+        const latest = 'v3.7.0';
         const available = true;
-        const fxVer = 3784;
-        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/server.7z';
-        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3784-83da5609fa0670b9e2a319bcc59f546b7b17717a/fx.tar.xz';
+        const fxVer = 3873;
+        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3873-55ea88ffa82d51734d1fc141f60487aab4214dba/server.zip';
+        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3873-55ea88ffa82d51734d1fc141f60487aab4214dba/fx.tar.xz';
 
         //If mention
         let mentionString = '';
         if (message.mentions.users.size) {
             mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
+
+        if(message.channel.id === '577993483600658436'){
+            await message.reply(`Please use <#589106731376836608>.`);
+            await message.delete();
+            return;
+        }
+
 
         //Preparing the message
         let updateMessage;

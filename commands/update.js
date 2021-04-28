@@ -23,9 +23,9 @@ module.exports = {
         //Well, let's state the obvious: editing here is not ideal, but that's how we gonna do!
         const latest = 'v3.7.0';
         const available = true;
-        const fxVer = 3873;
-        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3873-55ea88ffa82d51734d1fc141f60487aab4214dba/server.zip';
-        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3873-55ea88ffa82d51734d1fc141f60487aab4214dba/fx.tar.xz';
+        const fxVer = 3874;
+        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/3874-31c784e5970e835e8d1bcad6f098e7ef5a651200/server.7z';
+        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/3874-31c784e5970e835e8d1bcad6f098e7ef5a651200/fx.tar.xz';
 
         //If mention
         let mentionString = '';

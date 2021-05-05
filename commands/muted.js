@@ -118,7 +118,7 @@ module.exports = {
         if (mutedOverWeek.length || showFull) {
             if (showFull) {
                 messageLines.push(
-                    `:zipper_mouth: **Lol forget about those loosers:**`,
+                    `:zipper_mouth: **Lol forget about those losers:**`,
                     muteRangeInfo(mutedOverWeek),
                     null,
                 );

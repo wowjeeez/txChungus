@@ -8,8 +8,13 @@
         "recommendedBuild": {
             "channel": "111111111111111111",
             "message": "111111111111111111"
+        },
+        "statsTracker": {
+            "channel": "111111111111111111",
+            "message": "111111111111111111"
         }
     },
+    "txStatsPath": "./data/metadata.json",
     "commands": {
         "admins": [
             "111111111111111111"

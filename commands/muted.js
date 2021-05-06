@@ -33,7 +33,7 @@ module.exports = {
     description: 'Lists all the mutes',
     async execute(message, args, config) {
         //Check permission
-        if (!config.admins.includes(message.author.id)) {
+        if (!config.commands.admins.includes(message.author.id)) {
             return message.reply(`You're not allowed to use this command`);
         }
         const guild = message.guild;

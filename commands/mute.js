@@ -17,7 +17,7 @@ module.exports = {
     description: 'Mutes a person for x amount of time',
     async execute (message, args, config) {
         //Check permission
-        if (!config.admins.includes(message.author.id)) {
+        if (!config.commands.admins.includes(message.author.id)) {
             return message.reply(`You're not allowed to use this command`);
         }
 
@@ -33,7 +33,7 @@ module.exports = {
         if (!parsedTime) return message.channel.send('Invalid time dumbass');
         const reason = args.slice(2).join(" ") || 'No reason specified';
 
-        mention.roles.add(config.mutedRole).catch(() => message.channel.send('Something terrible just happened, fuck. Most likely missing permissions'));
+        mention.roles.add(config.commands.mutedRole).catch(() => message.channel.send('Something terrible just happened, fuck. Most likely missing permissions'));
 
         GlobalData.addMute({ id: mention.user.id, expire: Date.now() + parsedTime, reason });
         message.channel.send(`Muted \`${mention.displayName}\` for \`${args[1]}\`\nReason: \`${reason}\``);

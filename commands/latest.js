@@ -38,15 +38,15 @@ module.exports = {
         
 
         //In case fxserver already have the latest txAdmin
-        if(config.latestTXAdminVersionOnArtifact){
+        if(config.commands.latestTXAdminVersionOnArtifact){
             let isRecentBuildMessage = '';
-            if(config.latestTXAdminVersionOnArtifact + 32 > GlobalData.fxserverVersions.windows.latest){
+            if(config.commands.latestTXAdminVersionOnArtifact + 32 > GlobalData.fxserverVersions.windows.latest){
                 isRecentBuildMessage = 'Click on the **special link** below to see the latest artifact.';
             }
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
-                title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
-                description: `It already comes with FXServer **${config.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately! ${isRecentBuildMessage}`,
+                title: `👉 Latest txAdmin: ${config.commands.latestTXAdminVersion}`,
+                description: `It already comes with FXServer **${config.commands.latestTXAdminVersionOnArtifact}** and above, so no need to download it separately! ${isRecentBuildMessage}`,
                 fields: [
                     {
                         name: `📥 Latest Windows Artifact: ${emojify(GlobalData.fxserverVersions.windows.latest)}`,
@@ -68,7 +68,7 @@ module.exports = {
         }else{
             const txVersionMsg = new MessageEmbed({
                 color: 0x69E0B9,
-                title: `👉 Latest txAdmin: ${config.latestTXAdminVersion}`,
+                title: `👉 Latest txAdmin: ${config.commands.latestTXAdminVersion}`,
                 description: `The most recent txAdmin version is not yet present in the fxserver artifacts.\n${manualUpdateText}`
             });
             return message.channel.send(mentionString, txVersionMsg);

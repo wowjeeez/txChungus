@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['delete', 'purge'],
     async execute(message, args, config) {
         //Check permission
-        if(!config.admins.includes(message.author.id)){
+        if(!config.commands.admins.includes(message.author.id)){
             return message.reply(`shut up`);
         }
         //if above 100, prune 100

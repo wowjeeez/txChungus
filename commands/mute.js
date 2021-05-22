@@ -30,7 +30,7 @@ module.exports = {
         }
 
         const parsedTime = parseTime(args[1]);
-        if (!parsedTime) return message.channel.send('Invalid time dumbass');
+        if (!parsedTime) return message.channel.send('Invalid time');
         const reason = args.slice(2).join(" ") || 'No reason specified';
 
         mention.roles.add(config.commands.mutedRole).catch(() => message.channel.send('Something terrible just happened, fuck. Most likely missing permissions'));

@@ -22,21 +22,22 @@ module.exports = {
         }
 
         const mention = message.mentions.members.first();
-        if (!mention || !args[1]) return message.reply('Please use the correct command format. `!mute @mention 1w/1d/1h/1m reason`');
+        if (!mention) return message.reply('You have to mention one user');
+        if (typeof args[0] === 'undefined') return message.reply('Please use the correct command format. `!mute @mention 1w/1d/1h/1m reason`');
         if (mention.user.id === message.author.id) return message.reply('u brainlet...'); //user trying to mute himself
         if (mention.user.id === message.client.user.id) return message.reply('yo, really?'); //user trying to mute chungus
         if (GlobalData.mutes.find(mute => mute.id == mention.id)){
             GlobalData.removeMute(mention.id);
         }
 
-        const parsedTime = parseTime(args[1]);
-        if (!parsedTime) return message.channel.send('Invalid time');
-        const reason = args.slice(2).join(" ") || 'No reason specified';
+        const parsedTime = parseTime(args[0]);
+        if (!parsedTime) return message.reply('Invalid time');
+        const reason = args.slice(1).join(" ") || 'No reason specified';
 
-        mention.roles.add(config.commands.mutedRole).catch(() => message.channel.send('Something terrible just happened, fuck. Most likely missing permissions'));
+        mention.roles.add(config.commands.mutedRole).catch(() => message.reply('Something terrible just happened, fuck. Most likely missing permissions'));
 
         GlobalData.addMute({ id: mention.user.id, expire: Date.now() + parsedTime, reason });
-        message.channel.send(`Muted \`${mention.displayName}\` for \`${args[1]}\`\nReason: \`${reason}\``);
-        mention.send(`You have been muted for \`${args[1]}\`\nReason: \`${reason}\``).catch(() => logWarn("Failed to send a DM, propably disabled DMs"));
+        message.reply(`Muted \`${mention.displayName}\` for \`${args[0]}\`\nReason: \`${reason}\``);
+        mention.send(`You have been muted for \`${args[0]}\`\nReason: \`${reason}\``).catch(() => logWarn("Failed to send a DM, propably disabled DMs"));
     }
 };

@@ -1,5 +1,6 @@
 //Requires
 const modulename = "unmute";
+const { cloneDeep } = require('lodash');
 const { codeBlock } = require("../lib/utils");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
 const humanizeDuration = require("humanize-duration");
@@ -39,10 +40,6 @@ module.exports = {
         const guild = message.guild;
         const showFull = (args.length && args[0] == 'full');
 
-        if (!GlobalData.mutes.length) {
-            return await message.channel.send(`Nobody is muted right now.`);
-        }
-
         try {
             await guild.members.fetch();
         } catch (error) {
@@ -57,7 +54,13 @@ module.exports = {
         const mutedLessDay = [];
         const mutedLessWeek = [];
         const mutedOverWeek = [];
-        GlobalData.mutes.forEach(mutedUser => {
+        const mutes = cloneDeep(GlobalData.tempRoles).filter(t => t.role == 'muted');
+
+        if (!mutes.length) {
+            return await message.channel.send(`Nobody is muted right now.`);
+        }
+
+        mutes.forEach(mutedUser => {
             const expiration = mutedUser.expire - now;
             const member = guild.members.cache.get(mutedUser.id);
             if (member) {

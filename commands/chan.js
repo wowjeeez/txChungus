@@ -33,8 +33,14 @@ module.exports = {
                 //user trying to chan chungus or himself
                 if (user.id === message.author.id || user.id === message.client.user.id) return; 
 
-                //FIXME: set newcomer role
-                await message.channel.send(`**${user.username}** You will be able to use this channel again in 10 minutes. For now use the help channels.`);
+                try {
+                    const expiration = Date.now() + 15 * 60e3;
+                    await GlobalActions.tmpRoleAdd('newcomer', user.id, expiration, null);
+                    await message.channel.send(`**${user.username}** You will be able to use this channel again in 15 minutes. For now use the help channels.`);
+                } catch (error) {
+                    message.reply('Something terrible just happened, fuck. Most likely the member left.');
+                    dir(error)
+                }
             })
         }
     }

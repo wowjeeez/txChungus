@@ -33,7 +33,13 @@ module.exports = {
             mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
 
-        if(message.channel.id === '577993483600658436'){
+        const blacklistedChannels = [
+            '577993483600658436', //general
+            '600111300915494922', //menu-feedback  
+            '697102099892404344', //memes 
+        ]
+
+        if(blacklistedChannels.includes(message.channel.id)){
             await message.reply(`Please use <#589106731376836608>.`);
             await message.delete();
             return;

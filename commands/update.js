@@ -21,11 +21,11 @@ module.exports = {
     aliases: ['update', 'u'],
     async execute(message, args, config) {
         //Well, let's state the obvious: editing here is not ideal, but that's how we gonna do!
-        const latest = 'v4.1.0';
+        const latest = 'v4.3.1';
         const available = true;
-        const fxVer = 4022;
-        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4022-2771986f973c6df2844eb907973a4ff1db90bde9/server.7z';
-        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/4022-2771986f973c6df2844eb907973a4ff1db90bde9/fx.tar.xz';
+        const fxVer = 4156;
+        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4156-e332b2456b1f69e9fdb96f1c7011cbd273cdedc2/server.7z';
+        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/4156-e332b2456b1f69e9fdb96f1c7011cbd273cdedc2/fx.tar.xz';
 
         //If mention
         let mentionString = '';
@@ -55,7 +55,7 @@ Please use the two links below to download that _specific_ version:
 <:linux:780972840454979604> ${fxLin}`;
         } else {
             const gifLink = pickRandom(waitGifs);
-            updateMessage = `${mentionString} The ${latest} will be available in just a few hours!\n${gifLink}`;
+            updateMessage = `${mentionString} The ${latest} will be available today, stay tuned!\n${gifLink}`;
         }
 
         return message.channel.send(updateMessage);

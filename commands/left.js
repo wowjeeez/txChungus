@@ -7,8 +7,8 @@ module.exports = {
     description: 'How much time left to something',
     async execute(message, args, config) {
         // return await message.reply(`no`);
-        const deadline = 1624271189000;
-        const what = 'the v4.0 and v4.1 horde get the update notification';
+        const deadline = 1624287000;
+        const what = 'the v4.2 and v4.3 horde get the update notification';
 
         const mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         const timeleft = deadline - Date.now();

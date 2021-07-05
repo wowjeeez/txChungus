@@ -1,2 +1,2 @@
-txAdmin now has an awesome menu!  
-To learn more, visit: <https://github.com/tabarra/txAdmin/blob/master/docs/menu.md>
+:sunglasses: txAdmin now has an awesome menu!  
+:point_right: For the full documentation (and how to enable it), visit: <https://github.com/tabarra/txAdmin/blob/master/docs/menu.md>

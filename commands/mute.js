@@ -41,7 +41,6 @@ module.exports = {
             dir(error)
         }
 
-        mention.send(`You have been muted for \`${args[0]}\`\nReason: \`${reason}\``)
-            .catch(() => logWarn("Failed to send a DM, propably disabled DMs"));
+        mention.send(`You have been muted for \`${args[0]}\`\nReason: \`${reason}\``).catch();
     }
 };

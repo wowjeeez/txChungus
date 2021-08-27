@@ -1,3 +1,5 @@
+//Requires
+const { pickRandom } = require("../lib/utils");
 const pickingGifs = [
     'https://tenor.com/view/math-zack-galifianakis-thinking-calculating-gif-5120792',
     'https://tenor.com/view/mr-bean-rowan-atkinson-bean-bean-movie-working-title-films-gif-15034599',
@@ -5,9 +7,6 @@ const pickingGifs = [
     'https://tenor.com/view/madagscar-penguins-i-make-my-own-options-gif-9833864'
 ]
 
-const rndFromArray = (arr) => {
-    return arr[Math.floor(Math.random() * arr.length)]
-}
 
 module.exports = {
     rateLimit: {
@@ -27,8 +26,8 @@ module.exports = {
             `I picked:`,
             `> `
         ].join('\n');
-        const outMsg = await message.channel.send(header + rndFromArray(pickingGifs));
-        const answer = rndFromArray(thingsToPick);
+        const outMsg = await message.channel.send(header + pickRandom(pickingGifs));
+        const answer = pickRandom(thingsToPick);
 
         setTimeout(() => {
             outMsg.edit(`${header} **${answer}**`);

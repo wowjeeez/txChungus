@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'latest';
-const { emojify, anyUndefined, pickRandom } = require("../lib/utils");
+const { emojify, pickRandom } = require("../lib/utils");
 const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
 

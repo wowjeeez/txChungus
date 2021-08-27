@@ -25,10 +25,7 @@ module.exports = {
         }
 
         //If admin and on general
-        if (
-            message.channel.id === config.channels.general &&
-            config.commands.admins.includes(message.author.id)
-        ) {
+        if (message.txIsAdmin && message.channel.id === config.channels.general) {
             message.mentions.users.forEach(async (user) => {
                 //user trying to chan chungus or himself
                 if (user.id === message.author.id || user.id === message.client.user.id) return; 

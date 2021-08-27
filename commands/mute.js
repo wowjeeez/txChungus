@@ -17,8 +17,8 @@ module.exports = {
     description: 'Mutes a person for x amount of time',
     async execute (message, args, config) {
         //Check permission
-        if (!config.commands.admins.includes(message.author.id)) {
-            return message.reply(`You're not allowed to use this command`);
+        if (!message.txIsAdmin) {
+            return message.reply(`You're not allowed to use this command.`);
         }
 
         const mention = message.mentions.members.first();

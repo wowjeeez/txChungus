@@ -4,6 +4,7 @@ config/*
 data/*
 !data/.gitkeep
 !data/facts.txt
+!data/malwareStrings_prod.txt
 commands/test.js
 
 # Logs

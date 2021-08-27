@@ -49,6 +49,7 @@ module.exports = {
 
         //Calculating ranges
         let mutedAndLeft = 0;
+        let mutedMalware = 0;
         const now = Date.now();
         const mutedLessHour = [];
         const mutedLessDay = [];
@@ -65,7 +66,9 @@ module.exports = {
             const member = guild.members.cache.get(mutedUser.id);
             if (member) {
                 mutedUser.member = member;
-                if (expiration < hour) {
+                if (mutedUser.reason === 'malware_infection') { 
+                    mutedMalware++;
+                }else if (expiration < hour) {
                     mutedLessHour.push(mutedUser);
                 } else if (expiration < day) {
                     mutedLessDay.push(mutedUser);
@@ -131,6 +134,9 @@ module.exports = {
         }
         if (mutedAndLeft) {
             messageLines.push(`<:pog:796969505540538378> **${mutedAndLeft} who bitched out...**`);
+        }
+        if (mutedMalware) {
+            messageLines.push(`:biohazard: **${mutedMalware} who were infected by malware.**`);
         }
         return await message.channel.send(messageLines.join('\n'));
     },

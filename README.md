@@ -25,6 +25,32 @@
 ## Permissions required:
 https://discordapi.com/permissions.html#201681986
 
+## systemd
+```bash
+nano /etc/systemd/system/txchungus.service
+systemctl daemon-reload
+systemctl enable txchungus.service
+systemctl start txchungus.service
+alias chunguslog='journalctl -fu txchungus --output cat -n 500'
+```
+
+```conf
+[Unit]
+Description=txChungus Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=<your thing>
+WorkingDirectory=/home/<your thing>/txChungus
+ExecStart=/usr/bin/env FORCE_COLOR=3 node index.js prod
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ## License
 This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 

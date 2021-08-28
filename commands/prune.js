@@ -23,7 +23,7 @@ module.exports = {
         try {
             const toPrune = Math.min(amount, 100);
             await message.channel.bulkDelete(toPrune, true);
-            return message.channel.send(`Pruned ${toPrune} messages.`);
+            return message.channel.send(`<@${message.author.id}> Pruned ${toPrune} messages.`);
         } catch (error) {
             dir(error)
             return message.reply(`well, apparently I can't.`);

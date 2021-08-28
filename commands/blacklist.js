@@ -32,7 +32,7 @@ module.exports = {
 
             //leaving a log behind
             const botLogChannel = message.guild.channels.cache.get(config.channels.botLog);
-            await botLogChannel.send(`||<@272800190639898628>|| <@${message.author.id}> blacklisted:\n${args[0]}`);
+            await botLogChannel.send(`||<@272800190639898628>|| <@${message.author.id}> blacklisted: \`${args[0]}\`.`);
             return message.reply(`string blacklisted.`);
         } catch (error) {
             dir(error)

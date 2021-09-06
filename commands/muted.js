@@ -50,6 +50,7 @@ module.exports = {
         //Calculating ranges
         let mutedAndLeft = 0;
         let mutedMalware = 0;
+        let mutedLikelyMalware = 0;
         const now = Date.now();
         const mutedLessHour = [];
         const mutedLessDay = [];
@@ -68,6 +69,8 @@ module.exports = {
                 mutedUser.member = member;
                 if (mutedUser.reason === 'malware_infection') { 
                     mutedMalware++;
+                }else if (mutedUser.reason === 'likely_malware_infection') { 
+                    mutedLikelyMalware++;
                 }else if (expiration < hour) {
                     mutedLessHour.push(mutedUser);
                 } else if (expiration < day) {
@@ -137,6 +140,9 @@ module.exports = {
         }
         if (mutedMalware) {
             messageLines.push(`:biohazard: **${mutedMalware} who were infected by malware.**`);
+        }
+        if (mutedLikelyMalware) {
+            messageLines.push(`:eyes: **${mutedLikelyMalware} who were _likely_ infected by malware (or tried to ping everyone).**`);
         }
         return await message.channel.send(messageLines.join('\n'));
     },

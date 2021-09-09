@@ -1,21 +1,19 @@
 //Requires
 const modulename = 'latest';
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
-
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     description: 'Lists all the registered commands.',
     async execute (message, args, config) {
         const [static, dynamic] = GlobalData.commands.partition(c => c.static);
+        const dynamicCommands = [...dynamic.keys()].join(', ')
+        const staticCommands = [...static.keys()].join(', ')
+        const embed = new MessageEmbed().setColor('#0099ff').addFields({ name: ':robot: Dynamic Commands:', value: dynamicCommands },{ name: ':scroll: Static Commands:', value: staticCommands },).setTimestamp()
+        message.channel.send(embed);
         const msgLines = [
-            `\`\`\`diff`,
-            `+ Static commands:`,
             [...static.keys()].join(', '),
-            ``,
-            `+ Dynamic commands:`,
             [...dynamic.keys()].join(', '),
-            `\`\`\``,
         ];
-        message.channel.send(msgLines.join('\n'));
     },
 };

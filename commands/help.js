@@ -9,11 +9,24 @@ module.exports = {
         const [static, dynamic] = GlobalData.commands.partition(c => c.static);
         const dynamicCommands = [...dynamic.keys()].join(', ')
         const staticCommands = [...static.keys()].join(', ')
-        const embed = new MessageEmbed().setColor('#0099ff').addFields({ name: ':robot: Dynamic Commands:', value: dynamicCommands },{ name: ':scroll: Static Commands:', value: staticCommands },).setTimestamp()
-        message.channel.send(embed);
         const msgLines = [
             [...static.keys()].join(', '),
             [...dynamic.keys()].join(', '),
         ];
+        const commandsEmbed = {
+            color: 0x0099ff,
+            title: 'Commands',
+            fields: [
+                {
+                    name: ':robot: Dynamic Commands',
+                    value:  dynamicCommands,
+                },
+                {
+                    name: ':scroll: Static Commands:',
+                    value: staticCommands,
+                },
+            ],
+        };
+        message.channel.send({ embed: commandsEmbed });
     },
 };

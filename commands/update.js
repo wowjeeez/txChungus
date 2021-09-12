@@ -21,11 +21,11 @@ module.exports = {
     aliases: ['update', 'u'],
     async execute(message, args, config) {
         //Well, let's state the obvious: editing here is not ideal, but that's how we gonna do!
-        const latest = 'v4.4.2';
+        const latest = 'v4.5.0';
         const available = true;
-        const fxVer = 4315;
-        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4315-8d433f620449ef758a9933d69d9fa230ca616722/server.7z';
-        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/4315-8d433f620449ef758a9933d69d9fa230ca616722/fx.tar.xz';
+        const fxVer = 4478;
+        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4478-469601d22046dcb305d06ba90cc54c93d6b77af8/server.7z';
+        const fxLin = 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/4478-469601d22046dcb305d06ba90cc54c93d6b77af8/fx.tar.xz';
 
         //If mention
         let mentionString = '';

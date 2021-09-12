@@ -5,6 +5,7 @@ data/*
 !data/.gitkeep
 !data/facts.txt
 !data/malwareStrings_prod.txt
+!data/txAdminVersions.json
 commands/test.js
 
 # Logs

@@ -41,6 +41,7 @@
 
     "autoMuteStrings": [
         "@everyone",
+        "@here",
         ".info/",
         ".ink",
         ".live",

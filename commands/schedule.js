@@ -23,7 +23,9 @@ const schedule = [
     ['v4.4.1', 1626198000, 21],
     ['v4.4.2', 1628000000, 34],
     ['v4.5.0', 1630940000, 28],
+    ['v4.6.0', 1633370000, 21],
 ]
+//this is confusing...
 
 module.exports = {
     description: 'Shows the update deadline schedule.',

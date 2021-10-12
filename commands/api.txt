@@ -1,3 +1,3 @@
 As of now, there is no event or REST API in txAdmin, but it's planned.
 Please head out to the link below and upvote or post your event/api feature request:
-<https://github.com/tabarra/txAdmin/issues/179>
+<https://github.com/tabarra/txAdmin/issues/442>

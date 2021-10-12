@@ -33,12 +33,12 @@ module.exports = {
         //DEBUG if(member.id === '778133189771526164')
         
         //Set member as newcomer
-        try {
-            const expiration = Date.now() + 14 * 60e3;
-            await GlobalActions.tmpRoleAdd('newcomer', member.id, expiration, null);
-        } catch (error) {
-            logError(`Failed to set newcomer role with error: ${error.message}`);
-        }
+        // try {
+        //     const expiration = Date.now() + 14 * 60e3;
+        //     await GlobalActions.tmpRoleAdd('newcomer', member.id, expiration, null);
+        // } catch (error) {
+        //     logError(`Failed to set newcomer role with error: ${error.message}`);
+        // }
 
         //Sending welcome message
         try {

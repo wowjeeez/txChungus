@@ -3,4 +3,4 @@
 :point_right: For the full documentation (and how to enable it), visit: <https://github.com/tabarra/txAdmin/blob/master/docs/menu.md>
 **Known issues:**
 - Playerlist sync issue persists. Sorry, this proven to be quite challenging;
-- Spectate sometimes gives you a black screen - We _still_ need more info.
+- Sometimes the actions in the player modal doesn't work with error "failed to load player data".

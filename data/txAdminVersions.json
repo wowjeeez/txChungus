@@ -1,9 +1,9 @@
 {
-    "latest": "v4.6.1",
+    "latest": "v4.7.0",
     "available": true,
-    "fxsVersion": 4747,
+    "fxsVersion": 4834,
     "fxsArtifacts": {
-        "windows": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4747-7fdc41213869109c06c9b516a924ec7d8ce5fee5/server.7z",
-        "linux": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/4747-7fdc41213869109c06c9b516a924ec7d8ce5fee5/fx.tar.xz"
+        "windows": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4834-020dd257b3567fda1ad0df77c6f86858d9e63e2f/server.7z",
+        "linux": "not yet available"
     }
 }

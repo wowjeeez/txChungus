@@ -7,7 +7,7 @@ module.exports = {
     description: 'How much time left to something',
     async execute(message, args, config) {
         // return await message.reply(`no`);
-        const deadline = 1635184400;
+        const deadline = 1636391100;
         const what = 'The next update is scheduled for: ';
 
         const mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');

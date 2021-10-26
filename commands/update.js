@@ -1,7 +1,6 @@
 //Requires
 const modulename = 'latest';
 const { emojify, pickRandom } = require("../lib/utils");
-const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
 
 //Consts
@@ -20,42 +19,34 @@ module.exports = {
     description: 'Send instructions for the latest FXserver + txAdmin.',
     aliases: ['update', 'u'],
     async execute(message, args, config) {
-        //Well, let's state the obvious: editing here is not ideal, but that's how we gonna do!
-        const latest = 'v4.7.0';
-        const available = true;
-        const fxVer = 4834;
-        const fxWin = 'https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/4834-020dd257b3567fda1ad0df77c6f86858d9e63e2f/server.7z';
-        const fxLin = 'not yet available';
-
         //If mention
         let mentionString = '';
         if (message.mentions.users.size) {
             mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
         }
 
+        //If in the wrong channel
         const blacklistedChannels = [
             '577993483600658436', //general
             '600111300915494922', //menu-feedback  
             '697102099892404344', //memes 
         ]
-
         if(blacklistedChannels.includes(message.channel.id)){
             await message.reply(`Please use <#589106731376836608>.`);
             await message.delete();
             return;
         }
 
-
         //Preparing the message
         let updateMessage;
-        if (available) {
-            updateMessage = `${mentionString} **To update to ${latest} you just need to update to artifact ${emojify(fxVer)}!**
+        if (GlobalData.txVersions.available) {
+            updateMessage = `${mentionString} **To update to ${GlobalData.txVersions.latest} you just need to update to artifact ${emojify(GlobalData.txVersions.fxsVersion)}!**
 Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> ${fxWin}
-<:linux:780972840454979604> ${fxLin}`;
+<:windows:791692679419265044> ${GlobalData.txVersions.fxsArtifacts.windows}
+<:linux:780972840454979604> ${GlobalData.txVersions.fxsArtifacts.linux}`;
         } else {
             const gifLink = pickRandom(waitGifs);
-            updateMessage = `${mentionString} The ${latest} will be available today, stay tuned!\n${gifLink}`;
+            updateMessage = `${mentionString} The ${GlobalData.txVersions.latest} will be available today, stay tuned!\n${gifLink}`;
         }
 
         return message.channel.send(updateMessage);

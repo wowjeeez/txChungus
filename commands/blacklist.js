@@ -18,6 +18,8 @@ module.exports = {
             return message.reply('Usage: `!blacklist example.com`');
         }else if(args[0].length < 5) {
             return message.reply('This string is too small, you probably doing something wrong.');
+        }else if(args[0].includes('/')) {
+            return message.reply('I already told you guys, blacklist the DOMAIN ONLY!');
         }else if(doesMessageContains(args[0], GlobalData.malwareStrings)) {
             return message.reply('This string is already blacklisted.');
         }

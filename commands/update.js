@@ -17,7 +17,7 @@ const waitGifs = [
 
 module.exports = {
     description: 'Send instructions for the latest FXserver + txAdmin.',
-    aliases: ['update', 'u'],
+    aliases: ['u'],
     async execute(message, args, config) {
         //If mention
         let mentionString = '';
@@ -44,6 +44,7 @@ module.exports = {
 Please use the two links below to download that _specific_ version:
 <:windows:791692679419265044> ${GlobalData.txVersions.fxsArtifacts.windows}
 <:linux:780972840454979604> ${GlobalData.txVersions.fxsArtifacts.linux}`;
+// <:zap:823668080994811906> For ZAP servers, update to artifact \`4821\`.
         } else {
             const gifLink = pickRandom(waitGifs);
             updateMessage = `${mentionString} The ${GlobalData.txVersions.latest} will be available today, stay tuned!\n${gifLink}`;

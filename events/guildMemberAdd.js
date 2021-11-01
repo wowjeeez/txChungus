@@ -43,7 +43,6 @@ module.exports = {
         //Sending welcome message
         try {
             const msg = await this.selfHelpChannel.send(`<@${member.id}> Welcome! Please read the message above for the most used support commands.
-In 15 minutes you will be able to talk in the \`NO SUPPORT\` channels.
 Also, please read the last <#578045190955335691>!`);
             scheduleDelete(msg);
         } catch (error) {

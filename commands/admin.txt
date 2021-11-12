@@ -1,3 +1,4 @@
+#alias a
 :pencil: **Resetting the Master account:**
         - Delete `txData/admins.json` file *(will delete ALL admins)*;
         - Restart txAdmin;

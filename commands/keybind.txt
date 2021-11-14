@@ -1,0 +1,4 @@
+#alias keys
+#alias keybinds
+**The txAdmin menu has KeyBinds which can be changed in:** __Game Settings > Key Bindings > FiveM__
+Available keybinds: `Open Menu`, `Open Players Page`, `Toggle NoClip`, `Toggle Player IDs`, `End Spectate`.

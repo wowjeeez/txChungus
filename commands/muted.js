@@ -51,6 +51,7 @@ module.exports = {
         let mutedAndLeft = 0;
         let mutedMalware = 0;
         let mutedLikelyMalware = 0;
+        let mutedTooNew = 0;
         const now = Date.now();
         const mutedLessHour = [];
         const mutedLessDay = [];
@@ -71,6 +72,8 @@ module.exports = {
                     mutedMalware++;
                 }else if (mutedUser.reason === 'likely_malware_infection') { 
                     mutedLikelyMalware++;
+                }else if (mutedUser.reason === 'account_too_new') { 
+                    mutedTooNew++;
                 }else if (expiration < hour) {
                     mutedLessHour.push(mutedUser);
                 } else if (expiration < day) {
@@ -143,6 +146,9 @@ module.exports = {
         }
         if (mutedLikelyMalware) {
             messageLines.push(`:eyes: **${mutedLikelyMalware} who were _likely_ infected by malware (or tried to ping everyone).**`);
+        }
+        if (mutedTooNew) {
+            messageLines.push(`:beginner: **${mutedTooNew} who were too new.**`);
         }
         return await message.channel.send(messageLines.join('\n'));
     },

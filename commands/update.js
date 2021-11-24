@@ -1,5 +1,6 @@
 //Requires
 const modulename = 'latest';
+const { MessageEmbed } = require("discord.js");
 const { emojify, pickRandom } = require("../lib/utils");
 const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
 
@@ -38,18 +39,23 @@ module.exports = {
         }
 
         //Preparing the message
-        let updateMessage;
-        if (GlobalData.txVersions.available) {
-            updateMessage = `${mentionString} **To update to ${GlobalData.txVersions.latest} you just need to update to artifact ${emojify(GlobalData.txVersions.fxsVersion)}!**
-Please use the two links below to download that _specific_ version:
-<:windows:791692679419265044> ${GlobalData.txVersions.fxsArtifacts.windows}
-<:linux:780972840454979604> ${GlobalData.txVersions.fxsArtifacts.linux}`;
-// <:zap:823668080994811906> For ZAP servers, update to artifact \`4821\`.
+        if (GlobalData.txVersions.available) { 
+            const updateMessage = new MessageEmbed({
+                color: 0x69E0B9,
+                title: `How to get txAdmin ${GlobalData.txVersions.latest}:`,
+                description: `:point_right: You just need to update to artifact ${emojify(GlobalData.txVersions.fxsVersion)}
+:point_right: You can just drag and drop to replace the files.
+
+**<a:alert:897525925950914600> The "latest recommended" is outdated, use the links below!**
+[<:windows:791692679419265044> Download Windows Artifact](${GlobalData.txVersions.fxsArtifacts.windows}).
+[<:linux:780972840454979604> Download Linux Artifact](${GlobalData.txVersions.fxsArtifacts.linux}).
+<:zap:823668080994811906> For ZAP Game Servers, you will get a notification when available.`
+            });
+            return message.channel.send(mentionString, updateMessage);
         } else {
             const gifLink = pickRandom(waitGifs);
-            updateMessage = `${mentionString} The ${GlobalData.txVersions.latest} will be available today, stay tuned!\n${gifLink}`;
+            const updateMessage = `${mentionString} The ${GlobalData.txVersions.latest} will be available today, stay tuned!\n${gifLink}`;
+            return message.channel.send(updateMessage);
         }
-
-        return message.channel.send(updateMessage);
     },
 };

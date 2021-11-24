@@ -1,0 +1,7 @@
+#alias list
+_(this is not an issue with txAdmin)_
+An `Server list query` error usually means that the FiveM server list was not able to reach your server and it won't show up in the server list.
+The most common reason for this is misconfigured firewall or router. You can type `!ports` to find out how to configure your network.
+
+**:rocket: The easiest way to get a DDoS protected & pre-configured FiveM txAdmin server is on ZAP :rocket:**
+:point_right: :point_right: https://zap-hosting.com/txAdmin :point_left: :point_left:

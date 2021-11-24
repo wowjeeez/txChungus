@@ -1,3 +1,12 @@
 #alias t
-#file https://i.imgur.com/lFYMH88.png
-Its literally right there! Just read it.... 
+:warning:  **It already comes with FXServer, no need to download or install it** :warning: 
+
+:arrow_right:  **The easiest way to get a DDoS protected & preconfigured FiveM txAdmin server is on ZAP** 
+:arrow_right:  https://Zap-Hosting.com/txAdmin :point_left: 
+
+:arrow_right:  **Self-hosted Windows or Linux:**
+```
+- Update FXServer to the latest artifact/build (3404 or superior)
+- If Windows, double click FXServer.exe | If Linux, run `screen ./run.sh`
+- Open one of the URLs shown and configure txAdmin
+```

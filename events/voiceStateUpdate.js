@@ -8,11 +8,11 @@ module.exports = {
         const guild = oldState.guild;
         const member = await guild.members.fetch(newState.id);
         
-        if(newState.channelID == null){
-            const oldChannel = await guild.channels.cache.find(c => c.id == oldState.channelID);
+        if(newState.channelId == null){
+            const oldChannel = await guild.channels.cache.find(c => c.id == oldState.channelId);
             log(`[${member.user.tag}] just left '${oldChannel.name}'`);
-        }else if(oldState.channelID !== newState.channelID){
-            const newChannel = await guild.channels.cache.find(c => c.id == newState.channelID);
+        }else if(oldState.channelId !== newState.channelId){
+            const newChannel = await guild.channels.cache.find(c => c.id == newState.channelId);
             log(`[${member.user.tag}] just joined '${newChannel.name}'`);
         }
     },

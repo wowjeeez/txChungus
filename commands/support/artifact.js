@@ -1,5 +1,5 @@
 //Requires
-const modulename = 'latest';
+const modulename = 'artifact';
 const { MessageEmbed } = require("discord.js");
 const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
 
@@ -56,7 +56,10 @@ Use the **special** link below for the refreshed page!`,
                 },
             ]
         });
-        return message.channel.send(mentionString, txVersionMsg);
+        return message.channel.send({
+            content: (mentionString) ? mentionString : undefined, 
+            embeds: [txVersionMsg]
+        });
 
     },
 };

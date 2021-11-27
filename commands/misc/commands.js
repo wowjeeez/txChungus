@@ -26,7 +26,6 @@ module.exports = {
 
         const commandsEmbed = new MessageEmbed({
             color: 0x0099ff,
-            // title: 'Commands',
             fields: [
                 {
                     name: `:beginner: Support Commands (${categories.support.length}):`,
@@ -46,6 +45,6 @@ module.exports = {
                 },
             ],
         });
-        message.channel.send(commandsEmbed);
+        return message.channel.send({embeds: [commandsEmbed]});
     },
 };

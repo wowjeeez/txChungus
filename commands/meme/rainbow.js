@@ -1,10 +1,6 @@
 //Requires
-const modulename = 'test';
-const fs = require('fs/promises');
-const { MessageEmbed } = require("discord.js");
-const humanizeDuration = require('humanize-duration');
+const modulename = 'rainbow';
 const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
-const { doesMessageContains } = require("../../lib/utils");
 
 
 

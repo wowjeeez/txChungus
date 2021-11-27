@@ -51,7 +51,11 @@ module.exports = {
 [<:linux:780972840454979604> Download Linux Artifact](${GlobalData.txVersions.fxsArtifacts.linux}).
 <:zap:823668080994811906> For ZAP Game Servers, you will get a notification when available.`
             });
-            return message.channel.send(mentionString, updateMessage);
+            return message.channel.send({
+                content: (mentionString) ? mentionString : undefined, 
+                embeds: [updateMessage]
+            });
+
         } else {
             const gifLink = pickRandom(waitGifs);
             const updateMessage = `${mentionString} The ${GlobalData.txVersions.latest} will be available today, stay tuned!\n${gifLink}`;

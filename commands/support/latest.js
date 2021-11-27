@@ -1,7 +1,7 @@
 //Requires
 const modulename = 'latest';
-const { anyUndefined } = require("../lib/utils");
-const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
+const { anyUndefined } = require("../../lib/utils");
+const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
 
 
 module.exports = {

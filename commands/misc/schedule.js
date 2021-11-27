@@ -1,7 +1,7 @@
 //Requires
 const modulename = 'schedule';
 const humanizeDuration = require('humanize-duration');
-const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
 
 
 module.exports = {

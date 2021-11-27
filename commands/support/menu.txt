@@ -1,5 +1,5 @@
 #alias known
 :sunglasses: txAdmin now has an awesome menu!  
-:point_right: For the full documentation (and how to enable it), visit: <https://github.com/tabarra/txAdmin/blob/master/docs/menu.md>
+:point_right: For the full documentation visit: <https://github.com/tabarra/txAdmin/blob/master/docs/menu.md>
 **Known issues:**
 - Player IDs sometimes don't show. If you have more info on this let us know!

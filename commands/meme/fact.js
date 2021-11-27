@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'fact';
-const { pickRandom } = require("../lib/utils");
+const { pickRandom } = require("../../lib/utils");
 
 
 module.exports = {

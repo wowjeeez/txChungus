@@ -20,7 +20,7 @@ module.exports = {
         }
 
         try {
-            await GlobalActions.tmpRoleRemove('muted', mention.user.id);
+            await GlobalActions.tempRoleRemove('muted', mention.user.id);
             message.channel.send(`Unmuted \`${mention.displayName}\`.`);
         } catch (error) {
             message.reply('Something terrible just happened, fuck. Most likely the member left.');

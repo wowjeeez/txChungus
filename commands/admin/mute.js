@@ -34,7 +34,7 @@ module.exports = {
         const expiration = Date.now() + parsedTime;
 
         try {
-            await GlobalActions.tmpRoleAdd('muted', mention.user.id, expiration, reason);
+            await GlobalActions.tempRoleAdd('muted', mention.user.id, expiration, reason);
             message.reply(`Muted \`${mention.displayName}\` for \`${args[0]}\`\nReason: \`${reason}\``);
             log(`${message.author.tag} muted \`${mention.displayName}\` for \`${args[0]}\` and reason: \`${reason}\``);
         } catch (error) {

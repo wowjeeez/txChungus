@@ -32,7 +32,7 @@ module.exports = {
 
                 try {
                     const expiration = Date.now() + 15 * 60e3;
-                    await GlobalActions.tmpRoleAdd('newcomer', user.id, expiration, null);
+                    await GlobalActions.tempRoleAdd('newcomer', user.id, expiration, null);
                     await message.channel.send(`**${user.username}** You will be able to use this channel again in 15 minutes. For now use the help channels.`);
                 } catch (error) {
                     message.reply('Something terrible just happened, fuck. Most likely the member left.');

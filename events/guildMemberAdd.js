@@ -35,7 +35,7 @@ module.exports = {
         //Set member as newcomer
         // try {
         //     const expiration = Date.now() + 14 * 60e3;
-        //     await GlobalActions.tmpRoleAdd('newcomer', member.id, expiration, null);
+        //     await GlobalActions.tempRoleAdd('newcomer', member.id, expiration, null);
         // } catch (error) {
         //     logError(`Failed to set newcomer role with error: ${error.message}`);
         // }
@@ -53,7 +53,7 @@ Also, please read the last <#578045190955335691>!`);
         //Check if the user has pending temp roles
         const pendingRoles = GlobalData.tempRoles.filter(t => (t.id === member.id && t.role !== 'newcomer'));
         pendingRoles.forEach(t => {
-            member.roles.add(config.roles[t.role]).catch(() => { /*noop*/ });
+            member.roles.add(config.tempRoles[t.role]).catch(() => { /*noop*/ });
             log(`Reapplying role ${t.role} for ${member.displayName}`);
             if(t.role === 'muted'){
                 member.send(`You are still muted in ${member.guild.name}. The mute will be cleared soon.`).catch(() => { /*noop*/ });

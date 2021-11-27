@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'mute';
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 
 const validTimes = { m: 60000, h: 3600000, d: 86400000, w: 604800000 }
 

@@ -1,8 +1,8 @@
 //Requires
 const modulename = "unmute";
 const { cloneDeep } = require('lodash');
-const { codeBlock } = require("../../lib/utils");
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { codeBlock } = require("../../src/utils");
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 const humanizeDuration = require("humanize-duration");
 
 //Consts

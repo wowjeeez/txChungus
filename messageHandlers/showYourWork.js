@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'ShowYourWorkHandler';
-const { dir, log, logOk, logWarn, logError } = require('../console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
 
 
 //Helpers
@@ -53,17 +53,3 @@ Channel usage rules:
         logError(`Failed to react with message: ${error.message}`);
     }
 }
-
-
-/*
-
-
-
-Test string
-http://aaa.bb/ccc
-https://xxx.yyy/zzz
-se liga: discord.gg/kkkk
-✨ https://discord.gg/fivem ✨
-
-
-*/

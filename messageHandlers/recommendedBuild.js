@@ -2,7 +2,7 @@
 const modulename = 'RecommendedBuildHandler';
 const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
-const { dir, log, logOk, logWarn, logError } = require('../console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
 
 
 //Consts & vars

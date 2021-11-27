@@ -5,9 +5,8 @@ const path = require("path");
 const { Client, Intents, Collection, MessageEmbed} = require("discord.js");
 const Cron = require("./cron.js");
 const chokidar = require('chokidar');
-const stripAnsi = require('strip-ansi');
+
 const { dir, log, logOk, logWarn, logError } = require('./console')();
-const { doesMessageContains } = require("./utils");
 const commandsFolderPath = 'commands';
 const eventsFolderPath = 'events';
 
@@ -19,7 +18,6 @@ global.GlobalData = {
     tempRoles: null,
     malwareStrings: null,
     txVersions: null,
-    facts: null,
     fxserverVersions: {}
 }
 //NOTE: this REALLY shouldn't be a thing, but i really don't cate
@@ -50,13 +48,6 @@ module.exports = class txChungus {
         this.setupCommands();
         this.setupWatchers();
         this.startBot();
-        this.handlers = {
-            deleted: require('./handlers/deleted'),
-            recommendedBuild: require('./handlers/recommendedBuild'),
-            showYourWork: require('./handlers/showYourWork'),
-            directMessages: require('./handlers/directMessages'),
-            general: require('./handlers/general'),
-        }
         this.cron = new Cron(this);
     }
 
@@ -135,15 +126,6 @@ module.exports = class txChungus {
         } catch (error) {
             logError(`Failed to load data with error: ${error.message}`);
             if(!malwareStringsOnly) process.exit(1);
-        }
-
-        try {
-            const factsFile = fs.readFileSync('data/facts.txt', 'utf8');
-            GlobalData.facts = factsFile.trim().split('\n');
-        } catch (error) {
-            logError('Failed to load facts.txt');
-            dir(error);
-            process.exit(1);
         }
     }
 
@@ -332,8 +314,8 @@ module.exports = class txChungus {
             this.sendAnnouncement({embeds: [outMsg]}); !
             this.setupEvents();
         });
-        this.client.on('messageCreate', this.messageHandler.bind(this));
-        this.client.on('messageDelete', this.messageHandler.bind(this));
+        // this.client.on('messageCreate', this.messageHandler.bind(this));
+        // this.client.on('messageDelete', this.messageHandler.bind(this)); HACK
         this.client.on('error', (error) => {
             logError(error.message);
         });
@@ -364,7 +346,7 @@ module.exports = class txChungus {
                 const event = require(filePath);
                 // If someone is scrubbing their head because of the this mess in .bind take a look here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#Parameters
                 // The first argument in .bind represents the this from the callback function this.client.on returns and the other parameters are just additional params that don't have the same this scope as the first parameters
-                this.client.on(fileInfo.name, event.execute.bind(this, this.config))
+                this.client.on(fileInfo.name, event.execute.bind(this))
             } else {
                 return logError(`Unknown format: ${file}`);
             }
@@ -407,83 +389,5 @@ module.exports = class txChungus {
             logError(`Failed to save stats file with error: ${error.message}`);
         }
     }//Final addUsageStats()
-
-
-    //================================================================
-    async messageHandler (message) {
-        //Handler filter
-        if (message.author.bot) return;
-        if (message.guild && message.guild.id !== this.config.guild) return;
-        if (typeof message.content === 'undefined'){
-            logError(`Undefined message content:`);
-            dir(message);
-            return;
-        }
-        message.content = stripAnsi(message.content);
-
-        //Check if message is from an admin
-        const adminRoles = Object.values(this.config.adminsRoles);
-        message.txIsAdmin = message.author.id === message.guild.ownerId || message.member.roles.cache.hasAny(...adminRoles);
-
-        //Block malwares from spreading
-        if(!message.txIsAdmin && doesMessageContains(message.content, GlobalData.malwareStrings)){
-            if(message.channel.type === 'DM' || message.deleted) return;
-
-            logError(`${message.author.id} | ${message.author.tag} posted a malware:`);
-            logError(message.content);
-            message.delete().catch(() => { });
-            if(!this.recentInfectedWarnings.includes(message.author.id)){
-                this.recentInfectedWarnings.push(message.author.id);
-                this.sendAnnouncement(`<@${message.author.id}> was infected by a malware that tried to spread itself in this guild and was muted for a week because of that.`);
-                try {
-                    const expiration = Date.now() + 10080 * 60e3;
-                    await GlobalActions.tempRoleAdd('muted', message.author.id, expiration, 'malware_infection');
-                } catch (error) {
-                    dir(error)
-                }
-            }
-            return;
-        }
-        if(!message.txIsAdmin && doesMessageContains(message.content, this.config.autoMuteStrings)){
-            if(message.channel.type === 'DM' || message.deleted) return;
-
-            logWarn(`${message.author.id} | ${message.author.tag} auto-muted for posting:`);
-            logWarn(message.content);
-            message.delete().catch(() => { });
-            this.sendAnnouncement(`<@${message.author.id}> was muted for posting a suspect message likely containing a malware or trying to ping everyone.`);
-            try {
-                const expiration = Date.now() + 10080 * 60e3;
-                await GlobalActions.tempRoleAdd('muted', message.author.id, expiration, 'likely_malware_infection');
-
-                const cleanMessage = message.content.replace(/\`/g, '\\`').replace(/\n/g, '\n> ');
-                const botLogChannel = message.guild.channels.cache.get(this.config.channels.botLog);
-                await botLogChannel.send(`||<@272800190639898628>|| <@${message.author.id}> posted:\n${cleanMessage}`);
-            } catch (error) {
-                dir(error)
-            }
-            return;
-        }
-
-
-        //Handler selection
-        if (message.deleted) {
-            this.handlers.deleted(message, this);
-
-        } else if (message.channel.id == this.config.channels.recommendedBuild.channel) {
-            this.handlers.recommendedBuild(message, this);
-
-        } else if (message.channel.id == this.config.channels.showYourWork) {
-            this.handlers.showYourWork(message, this);
-
-        } else if (message.channel.type == 'DM') {
-            this.handlers.directMessages(message, this);
-
-        } else if (message.channel.type == 'GUILD_TEXT') {
-            this.handlers.general(message, this);
-
-        } else {
-            logWarn(`HandlerNotFound for message from ${message.author.tag} in ${message.channel.name} (${message.channel.type})`);
-        }
-    }
 
 } //Fim txChungus()

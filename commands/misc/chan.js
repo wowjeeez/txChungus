@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'chan';
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 
 const defaultMessage = `:point_right: Please use the correct channel for this.
 For txAdmin Help, please use <#589106731376836608>.

@@ -1,7 +1,7 @@
 //Requires
 const modulename = 'artifact';
 const { MessageEmbed } = require("discord.js");
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 
 //Helpers
 const anyUndefined = (...args) => { return [...args].some(x => (typeof x === 'undefined')) };

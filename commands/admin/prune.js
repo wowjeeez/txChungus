@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'prune';
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 
 module.exports = {
     description: 'deletes X messages.',

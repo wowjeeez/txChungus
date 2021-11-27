@@ -1,5 +1,5 @@
 //Requires
-const { dir, log, logOk, logWarn, logError, cleanTerminal, setTTYTitle } = require('./lib/console')();
+const { dir, log, logOk, logWarn, logError, cleanTerminal, setTTYTitle } = require('./src/console')();
 
 //Reset Terminal
 cleanTerminal();
@@ -13,7 +13,7 @@ if (process.argv.length != 3) {
 const profile = process.argv[2];
 log(`Profile selected: ${profile}`);
 const config = require(`./config/${profile}.json`);
-const txChungus = require('./lib/txChungus')
+const txChungus = require('./src/txChungus')
 const bot = new txChungus(config, profile);
 
 //Handle "the unexpected"

@@ -5,7 +5,7 @@ const fs = require('fs/promises');
 const { MessageEmbed } = require("discord.js");
 const humanizeDuration = require('humanize-duration');
 const { dir, log, logOk, logWarn, logError } = require('./console')(modulename);
-const { emojify } = require("../lib/utils");
+const { emojify } = require("../src/utils");
 
 //Helpers
 const now = () => { return Math.round(Date.now() / 1000) };

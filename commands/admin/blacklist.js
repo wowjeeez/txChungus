@@ -1,8 +1,8 @@
 //Requires
 const modulename = 'test';
 const fs = require('fs/promises');
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
-const { doesMessageContains } = require("../../lib/utils");
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
+const { doesMessageContains } = require("../../src/utils");
 
 module.exports = {
     rateLimit: false,

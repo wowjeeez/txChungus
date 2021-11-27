@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'GeneralHandler';
-const { dir, log, logOk, logWarn, logError } = require('../console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
 
 module.exports = GeneralHandler = async (message, txChungus) => {
     //Check if its a command

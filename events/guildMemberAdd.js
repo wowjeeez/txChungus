@@ -1,6 +1,7 @@
 //Requires
 const modulename = 'guildMemberAdd';
-const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
+const { pickRandom } = require("../src/utils");
 
 //Helpers
 const gifs = [
@@ -9,9 +10,6 @@ const gifs = [
     'https://tenor.com/view/fresh-prince-of-bel-air-carlton-carlton-dance-excited-lets-get-this-party-started-gif-15161860',
     'https://tenor.com/view/lets-party-snoop-snoop-dogg-dance-dancing-gif-10839279',
 ];
-const rndFromArray = (arr) => {
-    return arr[Math.floor(Math.random() * arr.length)]
-}
 const scheduleDelete = async(message, delay = 30) => {
     if(!message.id) return;
     setTimeout(async () => {
@@ -24,10 +22,10 @@ const scheduleDelete = async(message, delay = 30) => {
 }
 
 module.exports = {
-    async execute (config, member) {
+    async execute (member) {
         if(member.guild.memberCount % 1000 == 0){
-            const gif = rndFromArray(gifs);
-            this.sendAnnouncement(`<@${member.id}> YOU ARE MEMBER NUMBER ${member.guild.memberCount}!!!!\n_(unless you disconnect, in that case someone will take your spot, you ungrateful prick)_\n${gif}`);
+            const gif = pickRandom(gifs);
+            this.sendAnnouncement(`<@${member.id}> YOU ARE MEMBER NUMBER ${member.guild.memberCount}!!!!\n_(unless someone quits)_\n${gif}`);
         }
 
         //DEBUG if(member.id === '778133189771526164')
@@ -39,6 +37,18 @@ module.exports = {
         // } catch (error) {
         //     logError(`Failed to set newcomer role with error: ${error.message}`);
         // }
+
+        //Mute new accounts
+        const threeDaysAgo = Date.now() - 3 * 24 * 60 * 60e3;
+        if(member.user.createdTimestamp > threeDaysAgo){
+            try {
+                const expiration = Date.now() + 7 * 24 * 60 * 60e3;
+                await GlobalActions.tempRoleAdd('muted', member.id, expiration, 'account_too_new');
+                this.sendAnnouncement(`<@${member.id}> Your account is too new. To prevent spam you have been muted for a few days, sorry :(`);
+            } catch (error) {
+                dir(error)
+            }
+        }
 
         //Sending welcome message
         try {
@@ -53,7 +63,7 @@ Also, please read the last <#578045190955335691>!`);
         //Check if the user has pending temp roles
         const pendingRoles = GlobalData.tempRoles.filter(t => (t.id === member.id && t.role !== 'newcomer'));
         pendingRoles.forEach(t => {
-            member.roles.add(config.tempRoles[t.role]).catch(() => { /*noop*/ });
+            member.roles.add(this.config.tempRoles[t.role]).catch(() => { /*noop*/ });
             log(`Reapplying role ${t.role} for ${member.displayName}`);
             if(t.role === 'muted'){
                 member.send(`You are still muted in ${member.guild.name}. The mute will be cleared soon.`).catch(() => { /*noop*/ });

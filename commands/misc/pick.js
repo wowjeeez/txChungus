@@ -1,5 +1,5 @@
 //Requires
-const { pickRandom } = require("../../lib/utils");
+const { pickRandom } = require("../../src/utils");
 const pickingGifs = [
     'https://tenor.com/view/math-zack-galifianakis-thinking-calculating-gif-5120792',
     'https://tenor.com/view/mr-bean-rowan-atkinson-bean-bean-movie-working-title-films-gif-15034599',

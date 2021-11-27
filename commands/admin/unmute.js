@@ -1,6 +1,6 @@
 //Requires
 const modulename = 'unmute';
-const { dir, log, logOk, logWarn, logError } = require("../../lib/console")(modulename);
+const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
 
 module.exports = {
     description: 'Unmutes a person if some retard accidently mutes someone',

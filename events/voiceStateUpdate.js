@@ -1,10 +1,10 @@
 //Requires
 const modulename = 'voice';
-const { dir, log, logOk, logWarn, logError } = require('../lib/console')(modulename);
+const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
 
 
 module.exports = {
-    async execute (config, oldState, newState) {
+    async execute (oldState, newState) {
         const guild = oldState.guild;
         const member = await guild.members.fetch(newState.id);
         

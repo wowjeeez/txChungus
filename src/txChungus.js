@@ -234,7 +234,10 @@ module.exports = class txChungus {
                 async execute (message, args, config) {
                     const mentionString = message.mentions.users.map(x => `<@${x.id}>`).join(' ');
                     const msgWithMention = (mentionString)? [mentionString, ...messageLines] : messageLines;
-                    return message.channel.send(msgWithMention.join('\n'), {files});
+                    return message.channel.send({
+                        content: msgWithMention.join('\n'),
+                        files
+                    });
                 },
             };
             GlobalData.commands.set(fileInfo.name, command);

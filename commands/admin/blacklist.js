@@ -2,7 +2,7 @@
 const modulename = 'test';
 const fs = require('fs/promises');
 const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
-const { doesMessageContains } = require("../../src/utils");
+const { messageContains } = require("../../src/utils");
 
 module.exports = {
     rateLimit: false,
@@ -20,12 +20,12 @@ module.exports = {
             return message.reply('This string is too small, you probably doing something wrong.');
         }else if(args[0].includes('/')) {
             return message.reply('I already told you guys, blacklist the DOMAIN ONLY!');
-        }else if(doesMessageContains(args[0], GlobalData.malwareStrings)) {
+        }else if(messageContains(args[0], GlobalData.malwareStrings)) {
             return message.reply('This string is already blacklisted.');
         }
         logWarn(`${message.author.username} blacklisted '${args[0]}'`);
 
-        //Saving ban
+        //Saving blacklist
         const bannedStrings = GlobalData.malwareStrings.concat(args[0]).sort();
         try {
             //this this is all terrible but its 4am and i'm tired

@@ -2,7 +2,7 @@
 const modulename = 'messageCreate';
 const stripAnsi = require('strip-ansi');
 const { dir, log, logOk, logWarn, logError } = require('../src/console')(modulename);
-const { doesMessageContains } = require("../src/utils");
+const { messageContains, messageLinkContains } = require("../src/utils");
 
 const handlers = {
     recommendedBuild: require('../messageHandlers/recommendedBuild'),
@@ -33,7 +33,7 @@ module.exports = {
             )
 
         //Block malwares from spreading
-        if(!message.txIsAdmin && doesMessageContains(message.content, GlobalData.malwareStrings)){
+        if(!message.txIsAdmin && messageLinkContains(message.content, GlobalData.malwareStrings)){
             if(message.channel.type === 'DM') return;
 
             logError(`${message.author.id} | ${message.author.tag} posted a malware:`);
@@ -51,7 +51,7 @@ module.exports = {
             }
             return;
         }
-        if(!message.txIsAdmin && doesMessageContains(message.content, this.config.autoMuteStrings)){
+        if(!message.txIsAdmin && messageContains(message.content, this.config.autoMuteStrings)){
             if(message.channel.type === 'DM') return;
 
             logWarn(`${message.author.id} | ${message.author.tag} auto-muted for posting:`);

@@ -22,17 +22,12 @@ module.exports = class Cron {
         log('Setting up Cron');
 
         //Changelog
-        this.updateChangelog('windows', true);
-        this.updateChangelog('linux', true);
         setInterval(() => {
             this.updateChangelog('windows');
             this.updateChangelog('linux');
         }, 60 * 1000);
 
         //Status
-        setTimeout(() => {
-            this.updateStats(true);
-        }, 15 * 1000);
         setInterval(() => {
             this.updateStats();
         }, 15 * 60 * 1000);
@@ -46,6 +41,19 @@ module.exports = class Cron {
         setInterval(() => {
             txChungus.recentInfectedWarnings = [];
         }, 5 * 60 * 1000);
+
+        //String blacklist
+        setInterval(() => {
+            this.updateBlacklist();
+        }, 60 * 60 * 1000);
+
+        //15s delayed start
+        setTimeout(() => {
+            this.updateChangelog('windows', true);
+            this.updateChangelog('linux', true);
+            this.updateStats(true);
+            this.updateBlacklist();
+        }, 15 * 1000);
     }
 
     //================================================================
@@ -173,6 +181,33 @@ module.exports = class Cron {
         } catch (error) {
             // logWarn(`Failed to retrieve FXServer ${osType} update data with error: ${error.message}`);
             if (firstTime) dir(error.message)
+        }
+    }
+
+
+    //================================================================
+    async updateBlacklist () {
+        try {
+            //Downloading list
+            const gh = await axios.get('https://raw.githubusercontent.com/DevSpen/links/master/src/links.txt');
+            const domains = gh.data
+                .split('\n')
+                .map(x => x.toLowerCase().trim())
+                .filter(x => x.length);
+
+            //Selecting new ones
+            const newDomains = domains.filter(x => !GlobalData.malwareStrings.includes(x));
+            if(!newDomains.length) return log('Refreshed @DevSpen/links and found 0 new domains.');
+
+            //this this is all terrible but its 4am and i'm tired
+            const bannedStrings = GlobalData.malwareStrings.concat(newDomains).sort();
+            const malwareStringsFile = `./data/malwareStrings_${GlobalData.profile}.txt`; 
+            await fs.writeFile(malwareStringsFile, bannedStrings.join('\n'));
+
+            //leaving a log behind
+            return this.txChungus.sendAnnouncement(`Refreshed \`@DevSpen/links\` and added ${newDomains.length} new domains.`)
+        } catch (error) {
+            logError(`Failed to refresh banned domains from GH with error: ${error.message}`);
         }
     }
 

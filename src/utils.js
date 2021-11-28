@@ -19,7 +19,16 @@ module.exports.anyUndefined = (...args) => [...args].some(x => (typeof x === 'un
 
 module.exports.pickRandom = (opts) => opts[Math.floor(Math.random() * opts.length)];
 
-module.exports.doesMessageContains = (msg='', dict=[]) => {
+module.exports.messageContains = (msg='', dict=[]) => {
     const lowerCasedMessage = msg.toLowerCase();
     return !!dict.find((w) => lowerCasedMessage.includes(w));
+};
+
+const linkRegex = /https?:\/\/\S+\.\S+/gi
+module.exports.messageLinkContains = (msg='', dict=[]) => {
+    const links = [...msg.matchAll(linkRegex)];
+    return !!links.find(link => {
+        const parsed = new URL(link);
+        return dict.includes(parsed.host);
+    });
 };

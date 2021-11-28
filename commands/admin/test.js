@@ -4,7 +4,7 @@ const fs = require('fs/promises');
 const { MessageEmbed } = require("discord.js");
 const humanizeDuration = require('humanize-duration');
 const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modulename);
-const { doesMessageContains } = require("../../src/utils");
+const { messageContains } = require("../../src/utils");
 
 
 

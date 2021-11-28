@@ -76,6 +76,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 > '𝓬𝓸𝓹𝔂 блять 69 wew'.normalize('NFKD').replace(/[^\p{L}\p{N} ]/gu, '')
 'copy блять 69 wew'
 
+https://www.npmjs.com/package/weird-to-normal-chars
+
 
 https://api.urbandictionary.com/v0/define?term=xxxxxxxxxxx
 https://api.urbandictionary.com/v0/random
+
+
+!txupdate - How to update
+!txlocalhost - How to access "outside localhost"
+!txlogin - How to change or reset password
+!txports - How to open ports
+!nottx - THis is not a tx issue SMH

@@ -24,7 +24,8 @@ module.exports = GeneralHandler = async (message, txChungus) => {
     }
 
 
-    /* Rate limiter */ //this is poggu's code, and sometimes it bugs in a way nobody can do !m8b anymore
+    // Rate limiter
+    //this is poggu's code, and sometimes it bugs in a way nobody can do !m8b anymore
     if (command.rateLimit?.max && command.rateLimit?.resetTime && message.author.id !== '272800190639898628') {
         const limitData = command.limitData || { members: [] }
         let count = (command.rateLimit.global ? limitData.members?.global : limitData.members?.[message.author.id]) || 0;
@@ -45,9 +46,19 @@ module.exports = GeneralHandler = async (message, txChungus) => {
         command.limitData = limitData;
     }
 
+    //Block support commands to be used in the NO SUPPORT category
+    if(
+        command.category === 'support'
+        && message.channel.id !== txChungus.config.channels.botSpam
+        && message.channel.parent.id === txChungus.config.noSupportCategory
+    ){
+        await message.channel.send(`<@${message.author.id}> This is the **NO SUPPORT** category, please do not use support commands in here.`);
+        await message.delete();
+        return;
+    }
+
 
     //Logs, adds to the stats
-    // log(`[${message.author.tag}] ${message.content}`);
     txChungus.addUsageStats(commandName);
 
     //Executes command

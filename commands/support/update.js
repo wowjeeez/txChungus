@@ -28,12 +28,10 @@ module.exports = {
 
         //If in the wrong channel
         const blacklistedChannels = [
-            '577993483600658436', //general
-            '600111300915494922', //menu-feedback  
-            '697102099892404344', //memes 
+            '600111300915494922', //sugestions and bugs channel
         ]
         if(blacklistedChannels.includes(message.channel.id)){
-            await message.reply(`Please use <#589106731376836608>.`);
+            await message.channel.send(`<@${message.author.id}> Did you even bother looking in which channel you are?`);
             await message.delete();
             return;
         }

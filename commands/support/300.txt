@@ -1,6 +1,6 @@
-In 5 minutes I can fully cook Instant Cup Noodles :ramen: and eat half of it, yet your server can't start in that time?  
-You for sure:
+:warning: Make sure you do not have `stop monitor` in any of your cfg files, or txAdmin would not be able to detect that the server started.
+:hourglass: If that's not the case, then your server is taking more than 5 minutes to load, and you for sure:
 a) Have way too many resources. You know all those oversized asset warnings? yeah that's a thing.
 b) Have some slow-loading resources like chocohax.
-c) Have a slow CPU.
-Do not try to change txAdmin, fix YOUR server.
+c) Have a slow CPU or storage.
+There is no way to disable this restart, you NEED to FIX YOUR SERVER.

@@ -52,7 +52,7 @@ module.exports = GeneralHandler = async (message, txChungus) => {
         && message.channel.id !== txChungus.config.channels.botSpam
         && message.channel.parent.id === txChungus.config.noSupportCategory
     ){
-        await message.channel.send(`<@${message.author.id}> This is the **NO SUPPORT** category, please do not use support commands in here.`);
+        await message.channel.send(`<@${message.author.id}> :no_entry_sign: This is the **NO SUPPORT** category, please do not use support commands in here.`);
         await message.delete();
         return;
     }

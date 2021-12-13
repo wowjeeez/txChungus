@@ -1,5 +1,5 @@
 #alias t
-:warning:  **It already comes with FXServer, no need to download or install it** :warning: 
+:warning:  **txAdmin already comes with FXServer, no need to download or install it** :warning: 
 
 :arrow_right:  **The easiest way to get a DDoS protected & preconfigured FiveM txAdmin server is on ZAP** 
 :arrow_right:  https://Zap-Hosting.com/txAdmin :point_left: 

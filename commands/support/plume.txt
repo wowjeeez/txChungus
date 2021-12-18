@@ -1,3 +1,2 @@
-:rocket: **PlumeESX** is a full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended.  
-:point_right: **Forum Thread:** <https://forum.cfx.re/t/recipe-plumeesx-full-base-2021/1964029>
-:point_right: **YouTube Tutorial:** <https://www.youtube.com/watch?v=iGfwUCO0RZQ>
+PlumeESX is no longer a thing.  
+Actually ESX in general is no longer a thing, so you better just getting the QBCore Recipe.

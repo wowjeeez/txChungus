@@ -1,0 +1,4 @@
+#alias qb
+For QBCore related issues or questions, please check their Discord server, as well as their GitHub.
+:point_right: <https://github.com/qbcore-framework>
+:point_right: https://discord.gg/qbcore

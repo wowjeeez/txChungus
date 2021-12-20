@@ -47,7 +47,7 @@ module.exports = {
 **<a:alert:897525925950914600> The "latest recommended" is outdated, use the links below!**
 [<:windows:791692679419265044> Download Windows Artifact](${GlobalData.txVersions.fxsArtifacts.windows}).
 [<:linux:780972840454979604> Download Linux Artifact](${GlobalData.txVersions.fxsArtifacts.linux}).
-<:zap:823668080994811906> For ZAP Game Servers, you will get a notification when available.`
+<:zap:823668080994811906> For ZAP Game Servers, make sure you select the "latest" version and then restart txAdmin.`
             });
             return message.channel.send({
                 content: (mentionString) ? mentionString : undefined, 

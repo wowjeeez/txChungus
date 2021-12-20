@@ -1,10 +1,10 @@
 {
-    "latest": "v4.10.0",
+    "latest": "v4.11.0",
     "available": true,
-    "fxsVersion": 5104,
+    "fxsVersion": 5127,
     "fxsArtifacts": {
-        "windows": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/5104-5ebb6dfe826667c841027d6dbc7390e42abfb196/server.7z",
-        "linux": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/5104-5ebb6dfe826667c841027d6dbc7390e42abfb196/fx.tar.xz"
+        "windows": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/5127-796f31f03c40e6390f8cc2a54405be6f8a63cca3/server.7z",
+        "linux": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/5127-796f31f03c40e6390f8cc2a54405be6f8a63cca3/fx.tar.xz"
     },
     "history": [
         ["v3.7.0", 1619440000, 35],
@@ -22,6 +22,7 @@
         ["v4.7.0", 1635181500, 14],
         ["v4.8.0", 1636388888, 21],
         ["v4.9.0", 1637600000, 21],
-        ["v4.10.0", 1639500000, 21]
+        ["v4.10.0", 1639500000, 21],
+        ["v4.11.0", 1640025000, 21]
     ]
 }

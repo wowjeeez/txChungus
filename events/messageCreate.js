@@ -41,7 +41,7 @@ module.exports = {
             message.delete().catch(() => { });
             if(!this.recentInfectedWarnings.includes(message.author.id)){
                 this.recentInfectedWarnings.push(message.author.id);
-                this.sendAnnouncement(`<@${message.author.id}> was infected by a malware that tried to spread itself in this guild and was muted for a week because of that.`);
+                // this.sendAnnouncement(`<@${message.author.id}> was infected by a malware that tried to spread itself in this guild and was muted for a week because of that.`);
                 try {
                     const expiration = Date.now() + 10080 * 60e3;
                     await GlobalActions.tempRoleAdd('muted', message.author.id, expiration, 'malware_infection');

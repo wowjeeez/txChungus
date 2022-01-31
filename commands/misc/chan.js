@@ -4,8 +4,8 @@ const { dir, log, logOk, logWarn, logError } = require("../../src/console")(modu
 
 const defaultMessage = `:point_right: Please use the correct channel for this.
 For txAdmin Help, please use <#589106731376836608>.
-If you are using txAdmin on zap-hosting, use <#827624202625744956>;
-For FiveM server and resources use <#766868150590505011> and <#766868363041046589>.`;
+If you are using txAdmin on ZAP-Hosting, use <#827624202625744956>;
+For FiveM server and resources use <#926721141639381073>.`;
 
 module.exports = {
     description: 'Directs a person to a help channel',

@@ -36,7 +36,7 @@ module.exports = class txChungus {
         this.client = null;
         this.guild = null;
         this.announceChannel = null;
-        this.selfHelpChannel = null;
+        this.helloChannel = null;
         this.statsFile = `./data/stats_${GlobalData.profile}.json`;
         this.tempRolesFile = `./data/tempRoles_${GlobalData.profile}.json`;
         this.malwareStringsFile = `./data/malwareStrings_${GlobalData.profile}.txt`; //this is also in !blacklist, its 4am and idc
@@ -302,9 +302,9 @@ module.exports = class txChungus {
             if (!this.guild) {
                 logError(`Guild not found: ${this.config.guild}`);
             }
-            this.selfHelpChannel = await this.client.channels.resolve(this.config.channels.selfHelp.channel);
-            if (!this.selfHelpChannel) {
-                logError(`Self Help channel not found: ${this.config.channels.selfHelp.channel}`);
+            this.helloChannel = await this.client.channels.resolve(this.config.channels.hello.channel);
+            if (!this.helloChannel) {
+                logError(`Self Help channel not found: ${this.config.channels.hello.channel}`);
             }
             this.announceChannel = await this.client.channels.resolve(this.config.channels.general);
             if (!this.announceChannel) {
@@ -317,8 +317,7 @@ module.exports = class txChungus {
             this.sendAnnouncement({embeds: [outMsg]}); !
             this.setupEvents();
         });
-        // this.client.on('messageCreate', this.messageHandler.bind(this));
-        // this.client.on('messageDelete', this.messageHandler.bind(this)); HACK
+
         this.client.on('error', (error) => {
             logError(error.message);
         });

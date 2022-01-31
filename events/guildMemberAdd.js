@@ -23,10 +23,10 @@ const scheduleDelete = async(message, delay = 30) => {
 
 module.exports = {
     async execute (member) {
-        if(member.guild.memberCount % 1000 == 0){
-            const gif = pickRandom(gifs);
-            this.sendAnnouncement(`<@${member.id}> YOU ARE MEMBER NUMBER ${member.guild.memberCount}!!!!\n_(unless someone quits)_\n${gif}`);
-        }
+        // if(member.guild.memberCount % 1000 == 0){
+        //     const gif = pickRandom(gifs);
+        //     this.sendAnnouncement(`<@${member.id}> YOU ARE MEMBER NUMBER ${member.guild.memberCount}!!!!\n_(unless someone quits)_\n${gif}`);
+        // }
 
         //DEBUG if(member.id === '778133189771526164')
         
@@ -52,7 +52,7 @@ module.exports = {
 
         //Sending welcome message
         try {
-            const msg = await this.selfHelpChannel.send(`<@${member.id}> Welcome! Please read the message above for the most used support commands.
+            const msg = await this.helloChannel.send(`<@${member.id}> Welcome! Please read the message above for the most used support commands.
 Also, please read the last <#578045190955335691>!`);
             scheduleDelete(msg);
         } catch (error) {

@@ -64,7 +64,7 @@ module.exports = {
 
                 const cleanMessage = message.content.replace(/\`/g, '\\`').replace(/\n/g, '\n> ');
                 const botLogChannel = message.guild.channels.cache.get(this.config.channels.botLog);
-                await botLogChannel.send(`||<@272800190639898628>|| <@${message.author.id}> posted:\n${cleanMessage}`);
+                await botLogChannel.send(`<@${message.author.id}> posted:\n${cleanMessage}`);
             } catch (error) {
                 dir(error)
             }

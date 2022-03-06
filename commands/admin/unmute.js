@@ -20,14 +20,25 @@ module.exports = {
         }
 
         try {
+            let bothErrored;
+            let caughtErr;
             try {
                 await GlobalActions.tempRoleRemove('muted', mention.user.id);
-            } catch(err) {}
+            } catch(err) {
+                bothErrored = true;
+            }
 
             try {
                 await GlobalActions.tempRoleRemove('newcomer', mention.user.id);
-            } catch(err) {}
-            
+                bothErrored = false;
+            } catch(err) {
+                bothErrored = true;
+                caughtErr = err
+            }
+            if (bothErrored) {
+                throw caughtErr;
+            }
+
             message.channel.send(`Unmuted \`${mention.displayName}\`.`);
         } catch (error) {
             message.reply('Something terrible just happened, fuck. Most likely the member left.');

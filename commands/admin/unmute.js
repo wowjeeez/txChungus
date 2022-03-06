@@ -14,13 +14,20 @@ module.exports = {
         if (!mention) return message.reply('Mention the user you want to be unmuted, retard...');
 
         //Check if the user is muted
-        const currentMute = GlobalData.tempRoles.filter(t => (t.role === 'muted' && t.id === mention.user.id));
+        const currentMute = GlobalData.tempRoles.filter(t => ((t.role === 'muted' || t.role === 'newcomer') && t.id === mention.user.id));
         if(!currentMute){
             message.channel.send(`This user isn't muted.`);
         }
 
         try {
-            await GlobalActions.tempRoleRemove('muted', mention.user.id);
+            try {
+                await GlobalActions.tempRoleRemove('muted', mention.user.id);
+            } catch(err) {}
+
+            try {
+                await GlobalActions.tempRoleRemove('newcomer', mention.user.id);
+            } catch(err) {}
+            
             message.channel.send(`Unmuted \`${mention.displayName}\`.`);
         } catch (error) {
             message.reply('Something terrible just happened, fuck. Most likely the member left.');
